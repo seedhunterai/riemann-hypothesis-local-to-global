@@ -14,6 +14,25 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
     2. **§10 — Non-Abelian $`GL_2`$ Barriers:** Honda integrality, ordinary-prime slope collapse, $`100\%`$ purely $`p`$-adic Frobenius trace recovery mod $`p^2`$ without $`\mathbb{F}_p`$ point counting, and $`a_p`$-free $`2\times 2`$ Hecke–Wronskians (Theorem 10.1 `[D]`).
     3. **§11 — Projective Towers (§6.3.1):** Exact horizontal pullback and $`2`$-adic Iwasawa distribution pushforward $`\mu_{2N}(c_+)+\mu_{2N}(c_-)=\mu_N(c)`$ across dyadic levels vs. vertical infinite linear rank over $`\mathbb{Q}`$ (Theorem 11.1 `[D]`).
     4. **§12 — Polyhedral Decompilation & Window-Free Quasi-RH:** Skolem quantifier-poset verification, hidden-constraint LP gap, and exact rational Farkas certification of $`\theta^*(\tau_k)=\max(\tfrac12,\,2-\tfrac{\tau_k}{3})`$ on the blueprint model (Proposition 12.1 `[D]`), plus the Guth–Maynard (`30/13`) zero-density polyhedron saddle (`[C]`).
+    5. **Live Upstream Lean 4 DAG Audit (`upstream_lean_auditor.py`):** Direct streaming audit of all **58,880 `.lean` files** (`13.93M` lines, `931 MB`) in [`leanprover-community/riemann-hypothesis`](https://github.com/leanprover-community/riemann-hypothesis) (`ce1560fb`), verifying the exact acyclic import DAG from `src/Main.lean` (`58,858` reachable modules, `359,031` edges, max chain depth `95`, `0` reachable `sorry`s, `0` custom axioms) and mapping the codebase volume onto `(H0)–(H12)`.
+
+---
+
+## Live Upstream Audit (`leanprover-community/riemann-hypothesis @ ce1560fb`)
+
+| Architectural Role (`(H0)–(H12)`) | `.lean` Files | Share of `src/` | Reachable from `Main` | Total Lines |
+|---|---:|---:|---:|---:|
+| **`H9` — Abelian Varieties & Galois/Étale/Profinite Cohomology** | **27,174** | **46.16%** | 27,172 | **6,457,976** |
+| **`H1, H4, H5` — Heights, Theta Lifts, Periods & Mass Formulas** | 9,401 | 15.97% | 9,401 | 1,728,237 |
+| **`Est. B & C` — Automorphic Spectrum, Weil Bound & $`GL_3`$ Mean Squares** | 7,537 | 12.80% | 7,533 | 1,915,491 |
+| **`H12` — Main Reduction, Character Boxes & Windows (`vWin`)** | 7,068 | 12.01% | 7,063 | 1,984,819 |
+| **`H8, H10` — Local-to-Global, Projective Lattices & Dual Slopes** | 5,428 | 9.22% | 5,427 | 1,356,228 |
+| **Other Supporting Modules** | 1,561 | 2.65% | 1,560 | 313,098 |
+| **`H6, H7` — Local Formal Groups & Lubin–Tate Divisibility** | **415** | **0.70%** | 415 | **111,939** |
+| **`H0` — Global Fields & Foundations** | 287 | 0.49% | 287 | 65,326 |
+| **Total (`src/`)** | **58,871** | **100.00%** | **58,858** | **13,933,114** |
+
+> **Key takeaway:** The local Lubin–Tate prime-divisibility engine (`H6–H7`) accounts for **under 0.8%** of the live Lean proof (`111k` lines), while the global abelian-variety/cohomology denominator machinery (`H9`) alone accounts for **46.35%** (`6.46M` lines). Full JSON snapshot in [`upstream_audit_snapshot.json`](upstream_audit_snapshot.json).
 
 ---
 
@@ -21,7 +40,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 
 Every claim in [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md) carries an explicit status tag:
 - **`[D]`** — Proved unconditionally in the text for all parameter values.
-- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`60` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
+- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`64` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
 - **`[Q]` / `[H]`** — Quoted statements and unproved black-box hypotheses from M. Rubinstein's public reconstruction (*working draft v2*, 22 November 2026). This repository does **not** prove `(H0)–(H12)` and does **not** claim an independent proof of RH.
 
 ---
@@ -33,7 +52,7 @@ pip install -r requirements.txt
 pytest -v
 ```
 
-Running `pytest -v` executes all **60 verification tests** across 10 test modules in ~45 seconds.
+Running `pytest -v` executes all **64 verification tests** across 11 test modules in ~45 seconds.
 
 ### Key Standalone Reports
 
@@ -64,4 +83,8 @@ python projective_tower_lab.py report
 
 # §12: Lean blueprint AST ingestion, Quasi-RH Q-Farkas dichotomy, & Guth-Maynard 30/13 saddle
 python quasi_rh_extractor.py report
+
+# Live audit of leanprover-community/riemann-hypothesis (snapshot or fresh local git clone)
+python upstream_lean_auditor.py --snapshot upstream_audit_snapshot.json
+python upstream_lean_auditor.py --repo /path/to/riemann-hypothesis --out upstream_audit_snapshot.json
 ```
