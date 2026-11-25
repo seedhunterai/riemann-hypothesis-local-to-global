@@ -9,6 +9,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 
 - **Full Monograph:** [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md)
 - **Live Interactive Explorer:** **[https://seedhunterai.github.io/riemann-hypothesis-local-to-global/](https://seedhunterai.github.io/riemann-hypothesis-local-to-global/)** *(source: [`docs/index.html`](docs/index.html))*
+- **Zero-`sorry` Lean 4 Proofs:** [`lean/LocalToGlobal/Theorems.lean`](lean/LocalToGlobal/Theorems.lean) *(8 kernel-checked theorems, zero external dependencies, `lake build` in `<1s`)*
   - **Part I (§§0–8):** Explicit derivation of the zero-side Mellin/Landau window reduction (`[D]`), the Stuhler–Grayson slope inequality engine (`[D]`), the main inequality `(M)` (`[Q]`), and the audit of `(H0)–(H12)` (`[H]`).
   - **Part II (§§9–13):** Proved theorems (`[D]`) and exact arbitrary-precision computational certificates (`[C]`) on:
     1. **§9 — Determinant Identities vs. Padé Noise (§6.3.2):** Exact triangular basis invariance (Theorem 9.1 `[D]`), $`208`$-digit unshifted hyperfactorial identity, prime-certified split-prime counterexamples refuting single-determinant local factorization at shifted scales (Proposition 9.2 `[D]`), $`51`$-scale Padé annihilation via the zeroth Fitting ideal (`[C]`), Cauchy–Binet kernel trap & Malmsten–Kronecker lemniscate identity (Proposition 9.3 `[D]`), and rank-deficient ($`r < D`$) modular Hermite Normal Form spans (`[C]`).

@@ -1,0 +1,1 @@
+import LocalToGlobal.Theorems

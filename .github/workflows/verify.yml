@@ -26,5 +26,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run full 60-test verification suite
+      - name: Run full verification suite
         run: pytest -v
+
+  verify-lean:
+    name: Lean 4 Zero-Sorry Kernel Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Elan & Lean 4 toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Build Lean 4 proofs (zero sorry)
+        working-directory: lean
+        run: |
+          lake build
+          ! grep -rn '\bsorry\b' LocalToGlobal/

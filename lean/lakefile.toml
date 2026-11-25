@@ -1,0 +1,6 @@
+name = "local_to_global"
+version = "0.1.0"
+defaultTargets = ["LocalToGlobal"]
+
+[[lean_lib]]
+name = "LocalToGlobal"
