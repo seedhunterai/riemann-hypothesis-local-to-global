@@ -67,3 +67,9 @@ def test_upstream_cli_snapshot_mode(capsys):
     out = capsys.readouterr().out
     assert "ce1560fb" in out
     assert "max chain depth=95, acyclic=True" in out
+
+
+def test_github_pages_dashboard_contains_all_five_panels():
+    html = (Path(__file__).resolve().parent / "docs" / "index.html").read_text(encoding="utf-8")
+    for required in ("panel-upstream", "panel-quasirh", "panel-fitting", "panel-tower", "panel-zd", "ce1560fb", "58,880"):
+        assert required in html

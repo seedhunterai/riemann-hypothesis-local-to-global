@@ -8,6 +8,7 @@
 Companion monograph and reproducible exact-arithmetic codebase examining the local-to-global mechanism in the public reconstruction of the Alpoge–Claude proof of the Riemann hypothesis, resolving the structural questions of §6.3, isolating the non-abelian $`GL_2`$ barrier, and analyzing the polyhedral structure of window-free Quasi-RH reductions.
 
 - **Full Monograph:** [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md)
+- **Interactive Explorer (GitHub Pages):** [`docs/index.html`](docs/index.html) &rarr; https://seedhunterai.github.io/riemann-hypothesis-local-to-global/
   - **Part I (§§0–8):** Explicit derivation of the zero-side Mellin/Landau window reduction (`[D]`), the Stuhler–Grayson slope inequality engine (`[D]`), the main inequality `(M)` (`[Q]`), and the audit of `(H0)–(H12)` (`[H]`).
   - **Part II (§§9–13):** Proved theorems (`[D]`) and exact arbitrary-precision computational certificates (`[C]`) on:
     1. **§9 — Determinant Identities vs. Padé Noise (§6.3.2):** Exact triangular basis invariance (Theorem 9.1 `[D]`), $`208`$-digit unshifted hyperfactorial identity, prime-certified split-prime counterexamples refuting single-determinant local factorization at shifted scales (Proposition 9.2 `[D]`), $`51`$-scale Padé annihilation via the zeroth Fitting ideal (`[C]`), Cauchy–Binet kernel trap & Malmsten–Kronecker lemniscate identity (Proposition 9.3 `[D]`), and rank-deficient ($`r < D`$) modular Hermite Normal Form spans (`[C]`).
