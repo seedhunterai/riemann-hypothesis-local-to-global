@@ -1,6 +1,8 @@
-# The Local-to-Global Step: Monograph & Computational Verification Suite
+# Auditing the Alpoge–Claude Riemann Hypothesis Proof: The Local-to-Global Step
 
-[![Verify Mathematical & Computational Suite](https://github.com/seedhunterai/rh-local-to-global/actions/workflows/verify.yml/badge.svg)](https://github.com/seedhunterai/rh-local-to-global/actions/workflows/verify.yml)
+**Explicit derivation, structural resolution of §6.3, and 60-test verification suite for the Riemann zeta function and Lean blueprint.**
+
+[![Verify Mathematical & Computational Suite](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml/badge.svg)](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Companion monograph and reproducible exact-arithmetic codebase examining the local-to-global mechanism in the public reconstruction of the Alpoge–Claude proof of the Riemann hypothesis, resolving the structural questions of §6.3, isolating the non-abelian $GL_2$ barrier, and analyzing the polyhedral structure of window-free Quasi-RH reductions.
