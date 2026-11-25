@@ -55,12 +55,12 @@
       border-bottom: 1px solid var(--border);
     }
     .tab-bar {
-      display: flex; flex-wrap: wrap; gap: 0.25rem; padding: 0.55rem 0;
+      display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.3rem; padding: 0.55rem 0;
     }
     .tab-btn {
       background: transparent; color: var(--muted); border: 1px solid transparent;
-      padding: 0.45rem 0.9rem; border-radius: 8px; cursor: pointer;
-      font-size: 0.88rem; font-weight: 500; transition: all 0.15s ease;
+      padding: 0.42rem 0.72rem; border-radius: 8px; cursor: pointer; white-space: nowrap;
+      font-size: 0.84rem; font-weight: 500; transition: all 0.15s ease;
     }
     .tab-btn:hover { color: var(--text); background: var(--surface); }
     .tab-btn.active { color: var(--text); background: var(--surface-2); border-color: var(--accent); }
@@ -73,8 +73,9 @@
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-      padding: 1.2rem 1.3rem;
+      padding: 1.2rem 1.3rem; min-width: 0; overflow: hidden;
     }
+    .table-wrap { width: 100%; overflow-x: auto; }
     .card h2 { margin: 0 0 0.4rem; font-size: 1.15rem; }
     .card h3 { margin: 0 0 0.6rem; font-size: 0.98rem; color: #cfe0f5; }
     .kpi-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -82,15 +83,15 @@
     .kpi-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
     .bar-row { margin-bottom: 0.7rem; }
-    .bar-meta { display: flex; justify-content: space-between; font-size: 0.84rem; margin-bottom: 0.22rem; }
+    .bar-meta { display: flex; justify-content: space-between; font-size: 0.84rem; margin-bottom: 0.22rem; gap: 0.5rem; }
     .bar-track { height: 11px; background: #0d131d; border-radius: 6px; overflow: hidden; border: 1px solid #1f2b3d; }
     .bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s ease; }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); text-align: left; }
-    th { color: var(--muted); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    td.num, th.num { text-align: right; font-family: var(--mono); }
-    code { font-family: var(--mono); font-size: 0.84em; background: #0e141f; padding: 0.12rem 0.35rem; border-radius: 4px; color: #9ecbff; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; table-layout: auto; }
+    th, td { padding: 0.48rem 0.55rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+    td.num, th.num { text-align: right; font-family: var(--mono); white-space: nowrap; }
+    code { font-family: var(--mono); font-size: 0.82em; background: #0e141f; padding: 0.12rem 0.32rem; border-radius: 4px; color: #9ecbff; overflow-wrap: anywhere; word-break: break-word; }
 
     .slider-box {
       background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
@@ -185,12 +186,14 @@
         <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
           Most heavily imported internal modules in the transitive closure of <code>src/Main.lean</code> at commit <code>ce1560fb</code>.
         </p>
-        <table>
-          <thead>
-            <tr><th>Module</th><th class="num">In-Deg</th><th class="num">Lines</th></tr>
-          </thead>
-          <tbody id="hub-table"></tbody>
-        </table>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Module</th><th class="num">In-Deg</th><th class="num">Lines</th></tr>
+            </thead>
+            <tbody id="hub-table"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -336,7 +339,7 @@
 
 <footer>
   <div class="container">
-    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (64 tests) &middot; MIT License
+    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (65 tests) &middot; MIT License
   </div>
 </footer>
 
