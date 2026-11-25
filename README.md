@@ -1,6 +1,6 @@
 # Auditing the Alpoge–Claude Riemann Hypothesis Proof: The Local-to-Global Step
 
-**Explicit derivation, structural resolution of §6.3, and 60-test verification suite for the Riemann zeta function and Lean blueprint.**
+**Explicit derivation, structural resolution of §6.3, `(H0)–(H12)` Lean 4 Rosetta Stone, and 70-test verification suite for the Riemann zeta function and Lean blueprint.**
 
 [![Verify Mathematical & Computational Suite](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml/badge.svg)](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -17,6 +17,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
     3. **§11 — Projective Towers (§6.3.1):** Exact horizontal pullback and $`2`$-adic Iwasawa distribution pushforward $`\mu_{2N}(c_+)+\mu_{2N}(c_-)=\mu_N(c)`$ across dyadic levels vs. vertical infinite linear rank over $`\mathbb{Q}`$ (Theorem 11.1 `[D]`).
     4. **§12 — Polyhedral Decompilation & Window-Free Quasi-RH:** Skolem quantifier-poset verification, hidden-constraint LP gap, and exact rational Farkas certification of $`\theta^*(\tau_k)=\max(\tfrac12,\,2-\tfrac{\tau_k}{3})`$ on the blueprint model (Proposition 12.1 `[D]`), plus the Guth–Maynard (`30/13`) zero-density polyhedron saddle (`[C]`).
     5. **Live Upstream Lean 4 DAG Audit (`upstream_lean_auditor.py`):** Direct streaming audit of all **58,880 `.lean` files** (`13.93M` lines, `931 MB`) in [`leanprover-community/riemann-hypothesis`](https://github.com/leanprover-community/riemann-hypothesis) (`ce1560fb`), verifying the exact acyclic import DAG from `src/Main.lean` (`58,858` reachable modules, `359,031` edges, max chain depth `95`, `0` reachable `sorry`s, `0` custom axioms) and mapping the codebase volume onto `(H0)–(H12)`.
+    6. **Verified 16-Row Rosetta Stone & `H9` Boundary Cut-Set (`upstream_cutset_rosetta.py`):** Exact file/line/signature permalinks mapping `Main`, `Lemmas 1.1–1.2`, `Lemma 2.1`, `(H0)–(H12)`, and `Estimates B & C` onto `ce1560fb`, plus the exact cross-boundary vertex cut-set of `Development.AbelianVarietyTheory` (`10,292` direct gateway modules = **`39.95%`** of its `25,765` modules across `33,148` incoming edges).
 
 ---
 
@@ -34,7 +35,30 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 | **`H0` — Global Fields & Foundations** | 287 | 0.49% | 287 | 65,326 |
 | **Total (`src/`)** | **58,871** | **100.00%** | **58,858** | **13,933,114** |
 
-> **Key takeaway:** The local Lubin–Tate prime-divisibility engine (`H6–H7`) accounts for **under 0.8%** of the live Lean proof (`111k` lines), while the global abelian-variety/cohomology denominator machinery (`H9`) alone accounts for **46.35%** (`6.46M` lines). Full JSON snapshot in [`upstream_audit_snapshot.json`](upstream_audit_snapshot.json).
+> **Key takeaway:** The local Lubin–Tate prime-divisibility engine (`H6–H7`) accounts for **under 0.8%** of the live Lean proof (`111k` lines), while the global abelian-variety/cohomology denominator machinery (`H9`) alone accounts for **46.16%** (`6.46M` lines). Full JSON snapshot in [`upstream_audit_snapshot.json`](upstream_audit_snapshot.json).
+
+### Verified 16-Row `(H0)–(H12)` Rosetta Stone & `H9` Cut-Set (`ce1560fb`)
+
+> **The `H9` Mycelial Mesh Discovery (`rosetta_cutset_snapshot.json`):** Unlike human-authored libraries with a narrow API facade ($`<1\%`$ of modules), out of **25,765** reachable modules inside `Development.AbelianVarietyTheory` (`6,143,414` lines), **10,292 distinct modules (`39.95%`)** are directly imported from outside across **33,148** cross-boundary edges by **5,653** external callers (led by `MatchingOfParts` [`247`], `WeilTensorModels` [`225`], and `MkMemAdmissibleAtIffCocycle` [`192`]). Refactoring or replacing `(H9)` therefore cannot proceed by folder-level import cutting; it must sever at the single downstream theorem interface `UpperTheory.One.vwin_of_row` ([`VwinOfRow.lean#L1230`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean#L1230)).
+
+| Monograph Item | Section | Verified Lean 4 Permalink (`@ ce1560fb`) | Declaration Signature Excerpt | Tropical LP / Role |
+|---|---|---|---|---|
+| **Main Headline** | §0 | [`Main.lean#L12`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Main.lean#L12) | `theorem riemannHypothesis : RiemannHypothesis` | `ROOT_GOAL` |
+| **Lemma 1.1 & 1.2** | §1.2–1.3 | [`ZeroFreeAllOfTopG.lean#L1151`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L1151) | `theorem zeroFree_of_rpow_window` | `ANALYTIC_ZERO_SIDE` |
+| **Lemma 2.1** | §2.3 | [`FrameHeightOfDualSlope.lean#L461`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean#L461) | `theorem grid_function_of_lemma_A` | `LINEAR_ALGEBRA_CORE` |
+| **`(H0)`** | §3.1, §5.2 | [`DataParams.lean#L53`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalRingCardinality/DataParams.lean#L53) | `structure ParameterChoice' (D : D7) (L : SizeData₂ D)` | `CRITICAL_IN_QUASI_RH` ($`\lambda^*=2/3`$) |
+| **`(H1)`** | §3.2(b) | [`EveryCharacterOfLiteratureOfVWin.lean#L958`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L958) | `published_results_analytic` | `SLACK_AT_4/5 (+0.30)` |
+| **`(H2)`** | §6.1 | [`EveryCharacterOfLiteratureOfVWin.lean#L971`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L971) | `published_results_local : GlobalTheory.NLink.Hypotheses₂` | `SLACK_AT_4/5 (+0.30)` |
+| **`(H3)`** | §6.1 | [`DataNLoc.lean#L1214`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean#L1214) | `structure LocHW (l : ℕ) [Fact l.Prime] (P : LocPrime l)` | `CRITICAL_IN_QUASI_RH` |
+| **`(H4)`** | §3.3, §6.1 | [`GenusMassVolumes.lean#L365`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean#L365) | `def SdHerm ... (ψR : R → ℂ) (n : ℕ)` | `SLACK_AT_4/5 (+0.30)` |
+| **`(H5)`** | §3.2(c) | [`EveryCharacterOfLiteratureOfVWin.lean#L1065`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L1065) | `published_results_arithmetic : ...PublishedHodgeBundleTheorems` | `SLACK_AT_4/5 (+0.30)` |
+| **`(H6)`** | §3.2(a), §9 | [`AbsNormEqRelIndexMul.lean#L21`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean#L21) | `theorem absNorm_eq_relIndex_mul` | `SLACK_AT_4/5 (+0.30)` |
+| **`(H7)`** | §3.2(a) | [`FinalLL.lean#L20`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean#L20) | `theorem levelLattice : Formalism.GM.M.LevelLattice` | `LOCAL_TO_GLOBAL_BRIDGE` |
+| **`(H8)`** | §2.4 | [`DefsPl.lean#L18`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/HarderNarasimhan/DefsPl.lean#L18) | `def PlaceSplit : Prop` | `LINEAR_ALGEBRA_FILTRATION` |
+| **`(H9)`** | §3.2(c), §5.3 | [`VwinOfRow.lean#L1230`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean#L1230) | `theorem UpperTheory.One.vwin_of_row ... : UpperTheory.Top.VWin` | `WINDOW_GENERATOR (46.2%)` |
+| **`(H10) & (H11)`** | §2.4, §12 | [`Assemble.lean#L28`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean#L28) | `theorem halvesRec_of_facts` | `CRITICAL_IN_QUASI_RH` ($`\lambda^*=1/3`$) |
+| **Estimates B & C** | §4 | [`EveryCharacterOfLiteratureOfVWin.lean#L1083`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L1083) | `every_character_of_literature_of_vWin` | `AUX_PRIME_SUPPLY` |
+| **`(H12)`** | §5.1 | [`ZeroFreeAllOfTopG.lean#L1259`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L1259) | `theorem zeroFreeAll_of_topG ... : ZeroFreeAll` | `SCALE_UNIFORMITY_QUANTIFIER` |
 
 ---
 
@@ -42,7 +66,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 
 Every claim in [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md) carries an explicit status tag:
 - **`[D]`** — Proved unconditionally in the text for all parameter values.
-- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`64` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
+- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`70` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
 - **`[Q]` / `[H]`** — Quoted statements and unproved black-box hypotheses from M. Rubinstein's public reconstruction (*working draft v2*, 22 November 2026). This repository does **not** prove `(H0)–(H12)` and does **not** claim an independent proof of RH.
 
 ---
@@ -54,7 +78,7 @@ pip install -r requirements.txt
 pytest -v
 ```
 
-Running `pytest -v` executes all **64 verification tests** across 11 test modules in ~45 seconds.
+Running `pytest -v` executes all **70 verification tests** across 12 test modules in ~45 seconds.
 
 ### Key Standalone Reports
 
@@ -89,4 +113,8 @@ python quasi_rh_extractor.py report
 # Live audit of leanprover-community/riemann-hypothesis (snapshot or fresh local git clone)
 python upstream_lean_auditor.py --snapshot upstream_audit_snapshot.json
 python upstream_lean_auditor.py --repo /path/to/riemann-hypothesis --out upstream_audit_snapshot.json
+
+# 16-row (H0)-(H12) Rosetta Stone & AbelianVarietyTheory boundary cut-set audit
+python upstream_cutset_rosetta.py --snapshot rosetta_cutset_snapshot.json
+python upstream_cutset_rosetta.py --repo /path/to/riemann-hypothesis --out rosetta_cutset_snapshot.json
 ```

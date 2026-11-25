@@ -1,0 +1,591 @@
+{
+  "upstream_repo": "leanprover-community/riemann-hypothesis",
+  "commit_sha": "ce1560fba43e59629abdf3c27a279218fad9f77a",
+  "commit_short": "ce1560fb",
+  "abelian_variety_cutset": {
+    "total_avt_reachable_modules": 25765,
+    "total_avt_lines": 6143414,
+    "internal_avt_to_avt_edges": 134679,
+    "cross_boundary_incoming_edges": 33148,
+    "unique_avt_boundary_gateway_modules": 10292,
+    "gateway_compression_ratio_pct": 39.95,
+    "unique_external_caller_modules": 5653,
+    "top_20_boundary_gateways": [
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.MatchingOfParts",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/MatchingOfParts.lean",
+        "external_callers_count": 247,
+        "sample_external_callers": [
+          "Development.WeilBound.ThetaLifts.LocalTheory.ConeShifts.CoefficientSpans",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.HoweDuality.HoweDualityUnramifiedAllPlaces",
+          "Development.WeilBound.ThetaLifts.LocalTheory.ArchimedeanBumps.ArchHeisOf"
+        ],
+        "lines": 51,
+        "headline_declarations": [
+          "def KReal",
+          "def KFin",
+          "theorem agree_of_parts",
+          "theorem matching_of_parts"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/MatchingOfParts.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.BlockTheory.DivisorBase.WeilTensorModels",
+        "path": "src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean",
+        "external_callers_count": 225,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.ArchimedeanProductRuleDerivative",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.LocalWeilOperators.StepNA",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.HoweDuality.HoweDualityUnramifiedAllPlaces"
+        ],
+        "lines": 597,
+        "headline_declarations": [
+          "def StepBeta",
+          "def StepAlpha",
+          "def LocalMatching",
+          "def ThetaIntegralsAgree"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.NonGaloisDescent.MkMemAdmissibleAtIffCocycle",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/MkMemAdmissibleAtIffCocycle.lean",
+        "external_callers_count": 192,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.Foundations.Convolution.RealGroupAnalysis.ThetaBounds.NormDetKinf",
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.DotProductSymmetry.PotentiallyCrystallineContragredient",
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.AutomorphicForms.IsGalRepOfOfIso"
+        ],
+        "lines": 641,
+        "headline_declarations": [
+          "theorem tensAmb_tmul",
+          "def TensIso",
+          "def finiteSelmer",
+          "def Standing"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/MkMemAdmissibleAtIffCocycle.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Proofs.FoundationProofs.ExistsContinuousPadic",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/ExistsContinuousPadic.lean",
+        "external_callers_count": 178,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.NonGaloisTameLabelMu",
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.LevFixed",
+          "PositivityTheory.AutomorphicForms.PublishedInputs.RealGaloisRepresentations.IwahoriSphericalTransfer.IwahoriSphericalTransfer"
+        ],
+        "lines": 348,
+        "headline_declarations": [
+          "theorem resChar_mem",
+          "theorem norm_resChar_lt_one",
+          "theorem complRel_algebraMap",
+          "theorem exists_locAt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/ExistsContinuousPadic.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.NonGaloisDescent.NonemptyEquivOfRangeEq",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivOfRangeEq.lean",
+        "external_callers_count": 168,
+        "sample_external_callers": [
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.ContragredientPreservesSubquotient",
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.LevFixed",
+          "Development.WeilBound.RepresentationTheoryGL.GenericUnitaryGL.GenericUnlinkedGL.GenericUnlinkedGLOfSegRep2"
+        ],
+        "lines": 485,
+        "headline_declarations": [
+          "theorem clTwist_cl",
+          "theorem clTwist_clTwist",
+          "theorem clTwist_one",
+          "theorem clTwist_ofChar"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivOfRangeEq.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.T2SpaceGeneralLinearGroup",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/T2SpaceGeneralLinearGroup.lean",
+        "external_callers_count": 166,
+        "sample_external_callers": [
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.ContragredientPreservesSubquotient",
+          "PositivityTheory.AutomorphicForms.PublishedInputs.NonzeroTypes.PIndExt",
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.AdmissibleIrreducibleCentralScalar"
+        ],
+        "lines": 222,
+        "headline_declarations": [
+          "theorem haar_ne_zero_ne_top",
+          "theorem isHaarMeasure_haarVol",
+          "theorem haarVol_self",
+          "theorem eq_haarVol"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/T2SpaceGeneralLinearGroup.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Proofs.UnitaryExistence.LcscAdelicUnitaryGroup",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/UnitaryExistence/LcscAdelicUnitaryGroup.lean",
+        "external_callers_count": 125,
+        "sample_external_callers": [
+          "Development.WeilBound.ThetaLifts.LocalTheory.ConeShifts.CoefficientSpans",
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.TypedSpaceApproximation",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.SiegelWeilActions.PiMapConst"
+        ],
+        "lines": 495,
+        "headline_declarations": [
+          "theorem nonempty_homeomorph",
+          "theorem continuous_sigR",
+          "theorem lcsc_HA",
+          "theorem lcsc_adelicUnitary"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/UnitaryExistence/LcscAdelicUnitaryGroup.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.LatticeFrames.MiStarOfMid",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/LatticeFrames/MiStarOfMid.lean",
+        "external_callers_count": 119,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.NotMemQBase",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.CentralRatioStabAtTStatement",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.XiStdEqConstMulLocXi"
+        ],
+        "lines": 35,
+        "headline_declarations": [
+          "def OpsUnit"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/LatticeFrames/MiStarOfMid.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.HilbertNinetyQuotientHomEqIff",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean",
+        "external_callers_count": 118,
+        "sample_external_callers": [
+          "Development.AutomorphicSpectrum.Proofs.AdelicProofs.HasIwasawaOfFrame",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.LocalWeilOperators.StepNA",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.LagrangianDecomposition.DiagonalColumnInclusion.IncMDiagCols"
+        ],
+        "lines": 395,
+        "headline_declarations": [
+          "def IsUWeilPair",
+          "theorem IsUWeilB.isWeilB",
+          "theorem IsUWeilPair.isWeilPair",
+          "theorem IsUWeilPair.isUSplitting"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.NonGaloisDescent.NonemptyEquivMultiProdOne",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivMultiProdOne.lean",
+        "external_callers_count": 116,
+        "sample_external_callers": [
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.CuspidalMultiplicityProductZero",
+          "CompanionTheory.AutomorphicTheory.ProductFormulaTheory.CuspidalExhaustion.JuxtSwap",
+          "Development.WeilBound.RepresentationTheoryGL.GenericUnitaryGL.UnlinkedIrreducibility.LUnlinkedIrrOfHeredity"
+        ],
+        "lines": 809,
+        "headline_declarations": [
+          "theorem embeds_detRep_segment",
+          "theorem IsZSeg.equiv_detRep",
+          "theorem hasSupport_detRep",
+          "theorem isSpeh_one"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivMultiProdOne.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Foundations.SmoothPartStable",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Foundations/SmoothPartStable.lean",
+        "external_callers_count": 115,
+        "sample_external_callers": [
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.AdmissibleIrreducibleCentralScalar",
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.OmegaEquivInducedFibre",
+          "Development.AutomorphicArithmetic.Foundations.Convolution.TwistedLocalOrbits.QuotDesc"
+        ],
+        "lines": 197,
+        "headline_declarations": [
+          "def smInd",
+          "def cIndSpace",
+          "def cInd",
+          "def IsSupercuspidal"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Foundations/SmoothPartStable.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.TwistedInnerProducts.CovolOneIntegralAdd",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/CovolOneIntegralAdd.lean",
+        "external_callers_count": 94,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.CentralRatioStabAtTStatement",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.TwistedIterateEventuallyLarge",
+          "Development.WeilBound.RepresentationTheoryGL.RegularisedSiegelWeil.SingularNullSets.AddMemIffOfZero"
+        ],
+        "lines": 426,
+        "headline_declarations": [
+          "theorem sandwich_apply",
+          "theorem continuous_sandwich",
+          "theorem map_sandwich",
+          "theorem isThetaFunO_prod"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/CovolOneIntegralAdd.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Foundations.AestronglyMeasurableQuotMeasureIffLift",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Foundations/AestronglyMeasurableQuotMeasureIffLift.lean",
+        "external_callers_count": 89,
+        "sample_external_callers": [
+          "Development.WeilBound.RepresentationTheoryGL.ArchimedeanBaseChange.ArchimedeanBaseChangeProof.ThetaCellCovers.AdmissibleLeHolds",
+          "Development.AutomorphicArithmetic.Foundations.BaseChangeIdentities.RealTraceClifford.LgCpt",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.TwistedIterateEventuallyLarge"
+        ],
+        "lines": 637,
+        "headline_declarations": [
+          "theorem isUnitaryRep_RG",
+          "theorem leftInv_of_isAutFun",
+          "theorem isVolPair_volPair",
+          "theorem muQ_eq"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Foundations/AestronglyMeasurableQuotMeasureIffLift.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.SimpleTwistedTraceFormulaStable",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/SimpleTwistedTraceFormulaStable.lean",
+        "external_callers_count": 85,
+        "sample_external_callers": [
+          "Development.WeilBound.RepresentationTheoryGL.ArchimedeanBaseChange.ArchimedeanBaseChangeProof.SatakeExponents.UniformizerValuations.AdelicHeckeBlocks.MatchAll",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.IsobaricBaseChange.IntegralCoefficientBaseChange.UnitaryBaseChangeCharacters.UnitaryBaseChangeLinks.UnitaryGeometricSideSeparableTest",
+          "Development.AutomorphicArithmetic.Foundations.BaseChangeIdentities.FrameMatching.HeckeEigenvalueFiniteness.FrameExOfFin"
+        ],
+        "lines": 247,
+        "headline_declarations": [
+          "def HasTransfer",
+          "def HasBC",
+          "def BCCore",
+          "def TransferInert"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/SimpleTwistedTraceFormulaStable.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Foundations.EventuallyEqOfIsPreconnected",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Foundations/EventuallyEqOfIsPreconnected.lean",
+        "external_callers_count": 83,
+        "sample_external_callers": [
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.LocalWeilOperators.StepNA",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.SiegelWeilFormula.ParabolicBlockForms.QE",
+          "Development.WeilBound.RepresentationTheoryGL.RegularisedSiegelWeil.SingularNullSets.AddMemIffOfZero"
+        ],
+        "lines": 622,
+        "headline_declarations": [
+          "theorem ValueAt.cont_eq",
+          "theorem IsExtAt.cont_eventuallyEq",
+          "theorem HolValueAt.analyticAt_cont",
+          "theorem eqOn_cont"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Foundations/EventuallyEqOfIsPreconnected.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Proofs.FoundationProofs.HasSatakeGLOfIsSatVecGL",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/HasSatakeGLOfIsSatVecGL.lean",
+        "external_callers_count": 82,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.Foundations.Convolution.EndomorphismSlices.FiniteAdelicEstimates.SeenFam",
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.ConjugateRepresentations.CuspidalSupport.SatOfEig",
+          "Development.AutomorphicSpectrum.Proofs.BlockDecomposition.FiniteDiscreteSpectrum"
+        ],
+        "lines": 707,
+        "headline_declarations": [
+          "theorem exists_labInd_eq",
+          "theorem eq_zero_of_satU",
+          "theorem exists_satU_eq",
+          "theorem exists_hasSatU"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/HasSatakeGLOfIsSatVecGL.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.SecClass",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/SecClass.lean",
+        "external_callers_count": 81,
+        "sample_external_callers": [
+          "Development.EtaleCohomology.TateTwists.EtaleTateTwistSectionsLocallyGenerated",
+          "Development.EtaleCohomology.TateTwists.EtaleCochainSemilinearMapOnClasses",
+          "Development.AutomorphicArithmetic.CommutativeAlgebra.PicUnit"
+        ],
+        "lines": 113,
+        "headline_declarations": [
+          "def Pr.aw",
+          "def Pr.wa",
+          "def Pr.Deg",
+          "def Pr.bd"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/SecClass.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.Divisors.NormNegCmConstantEqAtAllEmbeddings",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/Divisors/NormNegCmConstantEqAtAllEmbeddings.lean",
+        "external_callers_count": 81,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.ExistsDegreeParametersBound",
+          "Development.AutomorphicSpectrum.Proofs.DivisibilityProofs.NvalLeOfMul",
+          "Development.WeilBound.CoreStatements.AutomorphicKernels.NadelVanishing.TopNSI"
+        ],
+        "lines": 499,
+        "headline_declarations": [
+          "theorem norm_neg_cmConstant_eq_at_all_embeddings",
+          "theorem rank_pos",
+          "theorem exists_good_pin",
+          "theorem exists_good_of_cover"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/Divisors/NormNegCmConstantEqAtAllEmbeddings.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.TwistedInnerProducts.ExistsMatchOver",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/ExistsMatchOver.lean",
+        "external_callers_count": 80,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.ThetaIntegralsAgreeOfIntegrableKernel",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.TwistedIterateEventuallyLarge",
+          "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.TwistRealProjectionAverageMonomial"
+        ],
+        "lines": 295,
+        "headline_declarations": [
+          "theorem ratio_eq_prod",
+          "theorem vK_smul",
+          "theorem vK_add",
+          "theorem exists_match_over"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/ExistsMatchOver.lean"
+      },
+      {
+        "avt_module": "Development.AbelianVarietyTheory.Definitions.TwistedInnerProducts.IsSubquotientDetRepParInd",
+        "path": "src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/IsSubquotientDetRepParInd.lean",
+        "external_callers_count": 80,
+        "sample_external_callers": [
+          "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.LevFixed",
+          "PositivityTheory.AutomorphicForms.PublishedInputs.RealGaloisRepresentations.IwahoriSphericalTransfer.IwahoriSphericalTransfer",
+          "Development.WeilBound.RepresentationTheoryGL.GenericUnitaryGL.GenericUnlinkedGL.GenericUnlinkedGLOfSegRep2"
+        ],
+        "lines": 626,
+        "headline_declarations": [
+          "theorem inSupport_detRep",
+          "theorem isSpherical_detRep",
+          "theorem hasSatake_detRep",
+          "theorem isCuspidal_detRep_one"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Definitions/TwistedInnerProducts/IsSubquotientDetRepParInd.lean"
+      }
+    ]
+  },
+  "top_inter_role_dependency_flows": [
+    {
+      "from_role": "H12_Assembly_And_Windows",
+      "to_role": "H9_Galois_AbelianVarieties",
+      "import_edges": 23550
+    },
+    {
+      "from_role": "H9_Galois_AbelianVarieties",
+      "to_role": "H8_H10_LocalToGlobal_Slopes",
+      "import_edges": 19392
+    },
+    {
+      "from_role": "H9_Galois_AbelianVarieties",
+      "to_role": "H1_H4_H5_Heights_Theta_Periods",
+      "import_edges": 17147
+    },
+    {
+      "from_role": "Est_BC_Spectrum_And_Weil",
+      "to_role": "H9_Galois_AbelianVarieties",
+      "import_edges": 9654
+    },
+    {
+      "from_role": "Est_BC_Spectrum_And_Weil",
+      "to_role": "H1_H4_H5_Heights_Theta_Periods",
+      "import_edges": 8193
+    },
+    {
+      "from_role": "H12_Assembly_And_Windows",
+      "to_role": "H8_H10_LocalToGlobal_Slopes",
+      "import_edges": 3682
+    },
+    {
+      "from_role": "H9_Galois_AbelianVarieties",
+      "to_role": "Other_Supporting_Modules",
+      "import_edges": 3460
+    },
+    {
+      "from_role": "H12_Assembly_And_Windows",
+      "to_role": "Est_BC_Spectrum_And_Weil",
+      "import_edges": 2529
+    },
+    {
+      "from_role": "H9_Galois_AbelianVarieties",
+      "to_role": "H6_H7_Local_Formal_Groups",
+      "import_edges": 2054
+    },
+    {
+      "from_role": "H8_H10_LocalToGlobal_Slopes",
+      "to_role": "H1_H4_H5_Heights_Theta_Periods",
+      "import_edges": 1921
+    },
+    {
+      "from_role": "H12_Assembly_And_Windows",
+      "to_role": "H1_H4_H5_Heights_Theta_Periods",
+      "import_edges": 1543
+    },
+    {
+      "from_role": "H8_H10_LocalToGlobal_Slopes",
+      "to_role": "Other_Supporting_Modules",
+      "import_edges": 1458
+    },
+    {
+      "from_role": "H12_Assembly_And_Windows",
+      "to_role": "Other_Supporting_Modules",
+      "import_edges": 1450
+    },
+    {
+      "from_role": "H1_H4_H5_Heights_Theta_Periods",
+      "to_role": "H8_H10_LocalToGlobal_Slopes",
+      "import_edges": 1222
+    }
+  ],
+  "rosetta_stone_16": [
+    {
+      "hypothesis": "Main Headline",
+      "monograph_section": "\u00a70 / Main",
+      "lp_slack_status": "ROOT_GOAL",
+      "lean_path": "src/Main.lean",
+      "line": 12,
+      "declaration_excerpt": "theorem riemannHypothesis : RiemannHypothesis :=",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Main.lean#L12"
+    },
+    {
+      "hypothesis": "Lemma 1.1 & 1.2",
+      "monograph_section": "\u00a71.2\u20131.3 (Window Landau)",
+      "lp_slack_status": "ANALYTIC_ZERO_SIDE",
+      "lean_path": "src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean",
+      "line": 1151,
+      "declaration_excerpt": "theorem zeroFree_of_rpow_window (F : CharFamily) {\u03b8 \u03b4 C : \u211d} (h\u03b8 : 0 \u2264 \u03b8) (h\u03b4 : 0 < \u03b4)",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L1151"
+    },
+    {
+      "hypothesis": "Lemma 2.1",
+      "monograph_section": "\u00a72.3 (Slope & Denominators)",
+      "lp_slack_status": "LINEAR_ALGEBRA_CORE",
+      "lean_path": "src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean",
+      "line": 461,
+      "declaration_excerpt": "theorem grid_function_of_lemma_A (hA : SlopeInequalityDenominators) : LargestSlopeFullLatticeFrames := by",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean#L461"
+    },
+    {
+      "hypothesis": "(H0)",
+      "monograph_section": "\u00a73.1 & \u00a75.2 (Parameter Sizes & Poset)",
+      "lp_slack_status": "CRITICAL_IN_QUASI_RH (\u03bb*=2/3)",
+      "lean_path": "src/Formalism/LocalRingCardinality/DataParams.lean",
+      "line": 53,
+      "declaration_excerpt": "structure ParameterChoice' (D : D7) (L : SizeData\u2082 D) : Type where",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalRingCardinality/DataParams.lean#L53"
+    },
+    {
+      "hypothesis": "(H1)",
+      "monograph_section": "\u00a73.2(b) (Archimedean Pairing Size)",
+      "lp_slack_status": "CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)",
+      "lean_path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean",
+      "line": 958,
+      "declaration_excerpt": "theorem UpperTheory.LiteratureTheorems.published_results_analytic : GlobalTheory.NRows.GeometricGaloisRepCompatibility :",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L958"
+    },
+    {
+      "hypothesis": "(H2)",
+      "monograph_section": "\u00a76.1 (Local Level Correction E_err)",
+      "lp_slack_status": "CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)",
+      "lean_path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean",
+      "line": 971,
+      "declaration_excerpt": "theorem UpperTheory.LiteratureTheorems.published_results_local : GlobalTheory.NLink.Hypotheses\u2082 :=",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L971"
+    },
+    {
+      "hypothesis": "(H3)",
+      "monograph_section": "\u00a76.1 (Word Height Comparison)",
+      "lp_slack_status": "CRITICAL_IN_QUASI_RH",
+      "lean_path": "src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean",
+      "line": 1214,
+      "declaration_excerpt": "structure LocHW (l : \u2115) [Fact l.Prime] (P : LocPrime l) where",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean#L1214"
+    },
+    {
+      "hypothesis": "(H4)",
+      "monograph_section": "\u00a73.3 & \u00a76.1 (Level Prime & Form Count Mass)",
+      "lp_slack_status": "CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)",
+      "lean_path": "src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean",
+      "line": 365,
+      "declaration_excerpt": "def SdHerm (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R] (\u03c8R : R \u2192 \u2102) (n : \u2115)",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean#L365"
+    },
+    {
+      "hypothesis": "(H5)",
+      "monograph_section": "\u00a73.2(c) & \u00a76.1 (First Lattice Covolume)",
+      "lp_slack_status": "CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)",
+      "lean_path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean",
+      "line": 1065,
+      "declaration_excerpt": "theorem UpperTheory.LiteratureTheorems.published_results_arithmetic : GlobalTheory.CovTop.PublishedHodgeBundleTheorems :",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L1065"
+    },
+    {
+      "hypothesis": "(H6)",
+      "monograph_section": "\u00a73.2(a) & \u00a79.3 (Lubin-Tate & CM Ideals)",
+      "lp_slack_status": "CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)",
+      "lean_path": "src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean",
+      "line": 21,
+      "declaration_excerpt": "theorem absNorm_eq_relIndex_mul (J J' : FractionalIdeal (\ud835\udcde K)\u2070 K) (hJ' : J' \u2260 0) (hle : J' \u2264 J) :",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean#L21"
+    },
+    {
+      "hypothesis": "(H7)",
+      "monograph_section": "\u00a73.2(a) (Invariant-Factor Step Bridge)",
+      "lp_slack_status": "LOCAL_TO_GLOBAL_BRIDGE",
+      "lean_path": "src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean",
+      "line": 20,
+      "declaration_excerpt": "theorem levelLattice : Formalism.GM.M.LevelLattice := LevelLattice_of _root_.Formalism.InvariantFactorPaths.KP.LL.middle",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean#L20"
+    },
+    {
+      "hypothesis": "(H8)",
+      "monograph_section": "\u00a72.4 (Harder-Narasimhan Mean-Slope)",
+      "lp_slack_status": "LINEAR_ALGEBRA_FILTRATION",
+      "lean_path": "src/Formalism/HarderNarasimhan/DefsPl.lean",
+      "line": 18,
+      "declaration_excerpt": "def PlaceSplit : Prop :=",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/HarderNarasimhan/DefsPl.lean#L18"
+    },
+    {
+      "hypothesis": "(H9)",
+      "monograph_section": "\u00a73.2(c) & \u00a75.3 (Cohomology Debt & Windows)",
+      "lp_slack_status": "WINDOW_GENERATOR (46.2% of repo!)",
+      "lean_path": "src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean",
+      "line": 1230,
+      "declaration_excerpt": "theorem UpperTheory.One.vwin_of_row (h : UpperTheory.V.Z.Win.RowT) : UpperTheory.Top.VWin :=",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean#L1230"
+    },
+    {
+      "hypothesis": "(H10) & (H11)",
+      "monograph_section": "\u00a72.4 & \u00a712 (Pairing Index & Codimension)",
+      "lp_slack_status": "CRITICAL_IN_QUASI_RH (\u03bb*=1/3)",
+      "lean_path": "src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean",
+      "line": 28,
+      "declaration_excerpt": "theorem halvesRec_of_facts (hG : GenHalves) (hLa : LaEqMap) (hMM : MMeq) (hPhi : PhiInj) (hU : UnifElt)",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean#L28"
+    },
+    {
+      "hypothesis": "Estimates B & C",
+      "monograph_section": "\u00a74 (Auxiliary Primes q, d & Zero-Free)",
+      "lp_slack_status": "AUX_PRIME_SUPPLY",
+      "lean_path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean",
+      "line": 1083,
+      "declaration_excerpt": "theorem UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin (hLiteratureRow : _root_.UpperTheory.One.M.",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L1083"
+    },
+    {
+      "hypothesis": "(H12)",
+      "monograph_section": "\u00a75.1 (Uniform Window Supply HostExW)",
+      "lp_slack_status": "SCALE_UNIFORMITY_QUANTIFIER",
+      "lean_path": "src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean",
+      "line": 1259,
+      "declaration_excerpt": "theorem zeroFreeAll_of_topG {la : \u211d} (hla : 1 < la) (h : TopG) (hS : \u2200 \u03c8 : PChar, HostExW la (GChi \u03c8).req) : ZeroFreeAll",
+      "github_permalink": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L1259"
+    }
+  ]
+}

@@ -111,6 +111,12 @@
     .toggle-group { display: inline-flex; background: #0d131d; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
     .toggle-btn { background: transparent; border: none; color: var(--muted); padding: 0.4rem 0.85rem; cursor: pointer; font-size: 0.84rem; }
     .toggle-btn.active { background: var(--accent); color: #07111e; font-weight: 600; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 0.9rem; }
+    .filter-input {
+      flex: 1 1 240px; background: #0d131d; border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); padding: 0.45rem 0.75rem; font-size: 0.85rem; font-family: var(--sans);
+    }
+    .filter-input:focus { outline: none; border-color: var(--accent); }
     footer { border-top: 1px solid var(--border); padding: 1.5rem 0; color: var(--muted); font-size: 0.84rem; text-align: center; }
   </style>
 </head>
@@ -120,12 +126,12 @@
   <div class="container">
     <h1>Auditing the Alpoge–Claude Riemann Hypothesis Proof</h1>
     <p class="subtitle">
-      Interactive structural explorer for <strong>The Local-to-Global Step</strong>: live 58,880-file DAG audit of
+      Interactive structural explorer for <strong>The Local-to-Global Step</strong>: live 58,880-file DAG audit &amp; 16-row Rosetta Stone of
       <code>leanprover-community/riemann-hypothesis</code>, Fitting-ideal Padé annihilation (§9), GL<sub>2</sub> Wronskian barriers (§10),
       dyadic Iwasawa towers (§11), and exact rational Farkas Quasi-RH certificates (§12).
     </p>
     <div class="pill-row">
-      <span class="pill green">65 / 65 Pytest Verified</span>
+      <span class="pill green">70 / 70 Pytest Verified</span>
       <span class="pill">Upstream Commit: ce1560fb (13.93M lines)</span>
       <span class="pill purple">Exact Integer &amp; Q-Farkas Certificates</span>
       <a class="pill" href="https://github.com/seedhunterai/riemann-hypothesis-local-to-global" target="_blank">GitHub Repository &rarr;</a>
@@ -136,11 +142,12 @@
 
 <nav class="tabs">
   <div class="container tab-bar">
-    <button class="tab-btn active" data-tab="upstream">1. Live Lean 4 DAG (58,880 files)</button>
-    <button class="tab-btn" data-tab="quasirh">2. Window-Free Quasi-RH Slider (§12)</button>
-    <button class="tab-btn" data-tab="fitting">3. Fitting-Ideal Padé &amp; HNF (§9)</button>
-    <button class="tab-btn" data-tab="tower">4. Iwasawa Tower &amp; GL₂ (§10–11)</button>
-    <button class="tab-btn" data-tab="zd">5. Guth–Maynard 30/13 Saddle</button>
+    <button class="tab-btn active" data-tab="upstream">1. Lean 4 DAG (58.8k)</button>
+    <button class="tab-btn" data-tab="quasirh">2. Quasi-RH Slider (§12)</button>
+    <button class="tab-btn" data-tab="fitting">3. Fitting &amp; HNF (§9)</button>
+    <button class="tab-btn" data-tab="tower">4. Iwasawa &amp; GL₂ (§10–11)</button>
+    <button class="tab-btn" data-tab="zd">5. Guth–Maynard 30/13</button>
+    <button class="tab-btn" data-tab="rosetta">6. Rosetta &amp; H9 Cut-Set</button>
   </div>
 </nav>
 
@@ -335,11 +342,102 @@
     </div>
   </section>
 
+  <!-- PANEL 6: ROSETTA STONE & H9 BOUNDARY CUT-SET -->
+  <section id="panel-rosetta" class="panel">
+    <div class="grid-4">
+      <div class="card">
+        <div class="kpi-label">Verified Rosetta Rows</div>
+        <div class="kpi-val" style="color:var(--green)">16 / 16</div>
+        <div class="kpi-sub"><code>(H0)–(H12)</code> + Lemmas 1.2, 2.1, Est. B/C</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">AbelianVarietyTheory</div>
+        <div class="kpi-val">25,765</div>
+        <div class="kpi-sub">6,143,414 lines &middot; 134,679 internal edges</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Direct H9 Gateway Cut-Set</div>
+        <div class="kpi-val" style="color:var(--amber)">10,292 (39.95%)</div>
+        <div class="kpi-sub">Mycelial mesh — not a narrow facade</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Cross-Boundary H9 Edges</div>
+        <div class="kpi-val" style="color:var(--purple)">33,148</div>
+        <div class="kpi-sub">Imported by 5,653 external modules</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem">
+      <h2>Verified 16-Row (H0)–(H12) Rosetta Stone (<code>ce1560fb</code>)</h2>
+      <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+        Every monograph hypothesis and bridge theorem verified directly against git blob line numbers in
+        <code>leanprover-community/riemann-hypothesis</code>, paired with its Tropical LP slack / Quasi-RH status.
+      </p>
+      <div class="filter-bar">
+        <input type="text" id="rosetta-search" class="filter-input" placeholder="Filter by (H0)–(H12), Lean file, declaration name, or LP role..." />
+        <div class="toggle-group" style="margin-bottom:0">
+          <button class="toggle-btn active" data-rfilter="ALL">All (16)</button>
+          <button class="toggle-btn" data-rfilter="QUASI">Quasi-RH Bottlenecks</button>
+          <button class="toggle-btn" data-rfilter="SLACK">Slack at &theta;=4/5</button>
+          <button class="toggle-btn" data-rfilter="WINDOW">H9 / Windows</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Monograph &sect;</th>
+              <th>Lean 4 Permalink (@ <code>ce1560fb</code>)</th>
+              <th>Verified Declaration Excerpt</th>
+              <th>LP / Architectural Role</th>
+            </tr>
+          </thead>
+          <tbody id="rosetta-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>The H9 Mycelial Mesh Discovery (Cut-Set Audit)</h2>
+        <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+          Human libraries expose a narrow API facade (&lt;1% of modules). In contrast, <strong>10,292 of 25,765</strong>
+          modules (<strong>39.95%</strong>) inside <code>Development.AbelianVarietyTheory</code> are directly imported from outside across
+          <strong>33,148 edges</strong>. Modularizing <code>(H9)</code> therefore requires severing at the downstream consumer theorem
+          <code>UpperTheory.One.vwin_of_row</code> (<code>VwinOfRow.lean:L1230</code>) rather than folder-level import cutting.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Top AVT Boundary Gateway</th>
+                <th class="num">Ext. Callers</th>
+                <th class="num">Lines</th>
+                <th>Exported Symbols</th>
+              </tr>
+            </thead>
+            <tbody id="avt-gateway-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Top Inter-Role Dependency Flows (8&times;8 DAG)</h2>
+        <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+          Directed cross-role import edges across the <code>359,031</code> reachable edges from <code>src/Main.lean</code>,
+          quantifying how window assembly (<code>H12</code>) and spectral estimates (<code>Est. B/C</code>) couple into <code>H9</code>.
+        </p>
+        <div id="flow-bars"></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (65 tests) &middot; MIT License
+    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (70 tests) &middot; MIT License
   </div>
 </footer>
 
@@ -554,6 +652,115 @@
   document.getElementById('zd-2024-btn').addEventListener('click', () => renderZD(true));
   document.getElementById('zd-1972-btn').addEventListener('click', () => renderZD(false));
   renderZD(true);
+
+  // --- Panel 6: Rosetta Stone & AbelianVarietyTheory Boundary Cut-Set ---
+  const COMMIT_SHA = 'ce1560fba43e59629abdf3c27a279218fad9f77a';
+  const GH_BASE = `https://github.com/leanprover-community/riemann-hypothesis/blob/${COMMIT_SHA}/`;
+
+  const rosettaRows = [
+    ['Main Headline', '§0 / Main', 'src/Main.lean', 12, 'theorem riemannHypothesis : RiemannHypothesis :=', 'ROOT_GOAL', 'slack'],
+    ['Lemma 1.1 & 1.2', '§1.2–1.3 (Window Landau)', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1151, 'theorem zeroFree_of_rpow_window (F : CharFamily) {θ δ C : ℝ} (hθ : 0 ≤ θ) (hδ : 0 < δ)', 'ANALYTIC_ZERO_SIDE', 'warn'],
+    ['Lemma 2.1', '§2.3 (Slope & Denominators)', 'src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean', 461, 'theorem grid_function_of_lemma_A (hA : SlopeInequalityDenominators) : LargestSlopeFullLatticeFrames := by', 'LINEAR_ALGEBRA_CORE', 'warn'],
+    ['(H0)', '§3.1 & §5.2 (Parameter Sizes & Poset)', 'src/Formalism/LocalRingCardinality/DataParams.lean', 53, "structure ParameterChoice' (D : D7) (L : SizeData₂ D) : Type where", 'CRITICAL_IN_QUASI_RH (λ*=2/3)', 'crit'],
+    ['(H1)', '§3.2(b) (Archimedean Pairing Size)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 958, 'theorem UpperTheory.LiteratureTheorems.published_results_analytic : GlobalTheory.NRows.GeometricGaloisRepCompatibility :', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
+    ['(H2)', '§6.1 (Local Level Correction E_err)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 971, 'theorem UpperTheory.LiteratureTheorems.published_results_local : GlobalTheory.NLink.Hypotheses₂ :=', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
+    ['(H3)', '§6.1 (Word Height Comparison)', 'src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean', 1214, 'structure LocHW (l : ℕ) [Fact l.Prime] (P : LocPrime l) where', 'CRITICAL_IN_QUASI_RH', 'crit'],
+    ['(H4)', '§3.3 & §6.1 (Level Prime & Form Count Mass)', 'src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean', 365, 'def SdHerm (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R] (ψR : R → ℂ) (n : ℕ)', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
+    ['(H5)', '§3.2(c) & §6.1 (First Lattice Covolume)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1065, 'theorem UpperTheory.LiteratureTheorems.published_results_arithmetic : GlobalTheory.CovTop.PublishedHodgeBundleTheorems :', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
+    ['(H6)', '§3.2(a) & §9.3 (Lubin–Tate & CM Ideals)', 'src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean', 21, "theorem absNorm_eq_relIndex_mul (J J' : FractionalIdeal (𝓞 K)⁰ K) (hJ' : J' ≠ 0) (hle : J' ≤ J) :", 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
+    ['(H7)', '§3.2(a) (Invariant-Factor Step Bridge)', 'src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean', 20, 'theorem levelLattice : Formalism.GM.M.LevelLattice := LevelLattice_of _root_.Formalism.InvariantFactorPaths.KP.LL.middle', 'LOCAL_TO_GLOBAL_BRIDGE', 'warn'],
+    ['(H8)', '§2.4 (Harder–Narasimhan Mean-Slope)', 'src/Formalism/HarderNarasimhan/DefsPl.lean', 18, 'def PlaceSplit : Prop :=', 'LINEAR_ALGEBRA_FILTRATION', 'warn'],
+    ['(H9)', '§3.2(c) & §5.3 (Cohomology Debt & Windows)', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean', 1230, 'theorem UpperTheory.One.vwin_of_row (h : UpperTheory.V.Z.Win.RowT) : UpperTheory.Top.VWin :=', 'WINDOW_GENERATOR (46.2% of repo!)', 'replaced'],
+    ['(H10) & (H11)', '§2.4 & §12 (Pairing Index & Codimension)', 'src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean', 28, 'theorem halvesRec_of_facts (hG : GenHalves) (hLa : LaEqMap) (hMM : MMeq) (hPhi : PhiInj) (hU : UnifElt)', 'CRITICAL_IN_QUASI_RH (λ*=1/3)', 'crit'],
+    ['Estimates B & C', '§4 (Auxiliary Primes q, d & Zero-Free)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1083, 'theorem UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin (hLiteratureRow : _root_.UpperTheory.One.M.', 'AUX_PRIME_SUPPLY', 'warn'],
+    ['(H12)', '§5.1 (Uniform Window Supply HostExW)', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1259, 'theorem zeroFreeAll_of_topG {la : ℝ} (hla : 1 < la) (h : TopG) (hS : ∀ ψ : PChar, HostExW la (GChi ψ).req) : ZeroFreeAll', 'SCALE_UNIFORMITY_QUANTIFIER', 'replaced'],
+  ];
+
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  let activeRFilter = 'ALL';
+
+  function renderRosetta() {
+    const q = document.getElementById('rosetta-search').value.trim().toLowerCase();
+    const tbody = document.getElementById('rosetta-tbody');
+    tbody.innerHTML = '';
+    rosettaRows.forEach(([hyp, sec, path, line, decl, role, cls]) => {
+      if (activeRFilter === 'QUASI' && !role.includes('CRITICAL_IN_QUASI_RH')) return;
+      if (activeRFilter === 'SLACK' && !role.includes('SLACK_AT_4/5')) return;
+      if (activeRFilter === 'WINDOW' && !(role.includes('WINDOW') || role.includes('SCALE_UNIFORMITY'))) return;
+      const hay = `${hyp} ${sec} ${path} ${decl} ${role}`.toLowerCase();
+      if (q && !hay.includes(q)) return;
+
+      const baseName = path.split('/').pop();
+      const url = `${GH_BASE}${path}#L${line}`;
+      tbody.innerHTML += `
+        <tr>
+          <td style="white-space:nowrap"><strong>${esc(hyp)}</strong></td>
+          <td>${esc(sec)}</td>
+          <td><a href="${url}" target="_blank" rel="noopener" title="${esc(path)}"><code>${esc(baseName)}:L${line}</code> &nearr;</a></td>
+          <td><code>${esc(decl)}</code></td>
+          <td><span class="badge ${cls}">${esc(role)}</span></td>
+        </tr>`;
+    });
+  }
+
+  document.getElementById('rosetta-search').addEventListener('input', renderRosetta);
+  document.querySelectorAll('[data-rfilter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-rfilter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeRFilter = btn.dataset.rfilter;
+      renderRosetta();
+    });
+  });
+  renderRosetta();
+
+  const avtGateways = [
+    ['Definitions.Divisors.MatchingOfParts', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/MatchingOfParts.lean', 247, 51, 'KReal, KFin, matching_of_parts'],
+    ['BlockTheory.DivisorBase.WeilTensorModels', 'src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean', 225, 597, 'StepAlpha, LocalMatching, ThetaIntegralsAgree'],
+    ['Definitions.NonGaloisDescent.MkMemAdmissibleAtIffCocycle', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/MkMemAdmissibleAtIffCocycle.lean', 192, 641, 'TensIso, finiteSelmer, Standing'],
+    ['Proofs.FoundationProofs.ExistsContinuousPadic', 'src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/ExistsContinuousPadic.lean', 178, 348, 'resChar_mem, exists_locAt'],
+    ['Definitions.NonGaloisDescent.NonemptyEquivOfRangeEq', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivOfRangeEq.lean', 168, 485, 'clTwist_cl, clTwist_ofChar'],
+    ['Definitions.Divisors.T2SpaceGeneralLinearGroup', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/T2SpaceGeneralLinearGroup.lean', 166, 222, 'isHaarMeasure_haarVol, haarVol_self'],
+    ['Proofs.UnitaryExistence.LcscAdelicUnitaryGroup', 'src/Development/AbelianVarietyTheory/Proofs/UnitaryExistence/LcscAdelicUnitaryGroup.lean', 125, 495, 'lcsc_HA, lcsc_adelicUnitary'],
+    ['Definitions.LatticeFrames.MiStarOfMid', 'src/Development/AbelianVarietyTheory/Definitions/LatticeFrames/MiStarOfMid.lean', 119, 35, 'OpsUnit'],
+    ['Definitions.Divisors.HilbertNinetyQuotientHomEqIff', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean', 118, 395, 'IsUWeilPair, isUSplitting'],
+    ['Definitions.NonGaloisDescent.NonemptyEquivMultiProdOne', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivMultiProdOne.lean', 116, 809, 'embeds_detRep_segment, isSpeh_one'],
+  ];
+  const gwTbody = document.getElementById('avt-gateway-tbody');
+  avtGateways.forEach(([shortMod, path, callers, ln, syms]) => {
+    gwTbody.innerHTML += `
+      <tr>
+        <td><a href="${GH_BASE}${path}" target="_blank" rel="noopener"><code>${esc(shortMod)}</code> &nearr;</a></td>
+        <td class="num">${callers}</td>
+        <td class="num">${ln}</td>
+        <td><code>${esc(syms)}</code></td>
+      </tr>`;
+  });
+
+  const roleFlows = [
+    ['H12 (Windows) → H9 (Abelian/Cohomology)', 23550, '#bc8cff'],
+    ['H9 (Abelian/Cohomology) → H8, H10 (Slopes)', 19392, '#3fb950'],
+    ['H9 (Abelian/Cohomology) → H1, H4, H5 (Heights/Theta)', 17147, '#58a6ff'],
+    ['Est. B & C (Spectrum/Weil) → H9 (Abelian/Cohomology)', 9654, '#39c5cf'],
+    ['Est. B & C (Spectrum/Weil) → H1, H4, H5 (Heights/Theta)', 8193, '#58a6ff'],
+    ['H12 (Windows) → H8, H10 (Slopes)', 3682, '#d29922'],
+    ['H9 (Abelian/Cohomology) → Other Supporting', 3460, '#6e7681'],
+    ['H12 (Windows) → Est. B & C (Spectrum/Weil)', 2529, '#39c5cf'],
+    ['H9 (Abelian/Cohomology) → H6, H7 (Lubin–Tate)', 2054, '#f85149'],
+    ['H8, H10 (Slopes) → H1, H4, H5 (Heights/Theta)', 1921, '#3fb950'],
+  ];
+  const flowEl = document.getElementById('flow-bars');
+  roleFlows.forEach(([label, edges, color]) => {
+    const w = Math.max(2.0, (edges / 23550) * 100);
+    flowEl.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-meta">
+          <span>${esc(label)}</span>
+          <span style="font-family:var(--mono);color:var(--muted)">${edges.toLocaleString()} edges</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${w.toFixed(1)}%;background:${color}"></div></div>
+      </div>`;
+  });
 </script>
 </body>
 </html>
