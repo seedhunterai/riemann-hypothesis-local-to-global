@@ -131,7 +131,7 @@
       dyadic Iwasawa towers (§11), and exact rational Farkas Quasi-RH certificates (§12).
     </p>
     <div class="pill-row">
-      <span class="pill green">70 / 70 Pytest Verified</span>
+      <span class="pill green">76 / 76 Pytest + 11 Lean 4 Theorems</span>
       <span class="pill">Upstream Commit: ce1560fb (13.93M lines)</span>
       <span class="pill purple">Exact Integer &amp; Q-Farkas Certificates</span>
       <a class="pill" href="https://github.com/seedhunterai/riemann-hypothesis-local-to-global" target="_blank">GitHub Repository &rarr;</a>
@@ -142,12 +142,13 @@
 
 <nav class="tabs">
   <div class="container tab-bar">
-    <button class="tab-btn active" data-tab="upstream">1. Lean 4 DAG (58.8k)</button>
-    <button class="tab-btn" data-tab="quasirh">2. Quasi-RH Slider (§12)</button>
-    <button class="tab-btn" data-tab="fitting">3. Fitting &amp; HNF (§9)</button>
-    <button class="tab-btn" data-tab="tower">4. Iwasawa &amp; GL₂ (§10–11)</button>
-    <button class="tab-btn" data-tab="zd">5. Guth–Maynard 30/13</button>
-    <button class="tab-btn" data-tab="rosetta">6. Rosetta &amp; H9 Cut-Set</button>
+    <button class="tab-btn active" data-tab="upstream">1. Lean DAG</button>
+    <button class="tab-btn" data-tab="quasirh">2. Quasi-RH (&sect;12)</button>
+    <button class="tab-btn" data-tab="fitting">3. Fitting &amp; HNF</button>
+    <button class="tab-btn" data-tab="tower">4. Iwasawa &amp; GL₂</button>
+    <button class="tab-btn" data-tab="zd">5. Guth–Maynard</button>
+    <button class="tab-btn" data-tab="rosetta">6. Rosetta &amp; H9</button>
+    <button class="tab-btn" data-tab="prfinder">7. PR Finder &amp; GRH</button>
   </div>
 </nav>
 
@@ -433,11 +434,103 @@
     </div>
   </section>
 
+  <!-- PANEL 7: DOMINATOR PR TARGET FINDER & CONDUCTOR-ASPECT QUASI-GRH -->
+  <section id="panel-prfinder" class="panel">
+    <div class="grid-4">
+      <div class="card">
+        <div class="kpi-label">Nov 20 &rarr; ce1560fb Shrinkage</div>
+        <div class="kpi-val" style="color:var(--green)">&minus;66.39%</div>
+        <div class="kpi-sub">175,187 &rarr; 58,880 files &middot; 63,816 clump members</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">0-Side-Entrance Islands</div>
+        <div class="kpi-val" style="color:var(--accent)">4,413</div>
+        <div class="kpi-sub">155 PR-sized cones (25–600 files, <code>in-cut=1</code>)</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">AGENTS.md Debt Census</div>
+        <div class="kpi-val" style="color:var(--amber)">627 / 3</div>
+        <div class="kpi-sub"><code>set_option backward</code> / <code>exact_by_kernel</code></div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Challenge.lean Inversion</div>
+        <div class="kpi-val" style="color:var(--purple)">58,857</div>
+        <div class="kpi-sub">&zeta;(s) specializes Dirichlet GRH (<code>N=1, &chi;=1</code>)</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1.25rem">
+      <h2>Contributor &ldquo;PR Target Finder&rdquo; — Certified 1-Vertex-Cut Dominator Islands (<code>side_entrances = 0</code>)</h2>
+      <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+        Exact Lengauer–Tarjan / DAG dominator subtrees <code>D(d)</code> from <code>src/Main.lean</code>: every path into
+        <code>D(d)</code> passes through the single gateway module <code>d</code> (verified <code>0</code> interior side-entrances across all
+        <code>359,031</code> edges). Replacing or Mathlib-discharging <code>d</code> unlocks deleting all <code>|D(d)| &minus; 1</code> internal
+        files in one atomic PR — even carving clean <code>1,268</code>-file islands inside <code>AbelianVarietyTheory</code> (<code>H9</code>).
+      </p>
+      <div class="filter-bar">
+        <input type="text" id="pr-search" class="filter-input" placeholder="Search gateway module, classical theorem (PoincareLelong, Moriwaki, Kato...), or role..." />
+        <div class="toggle-group" style="margin-bottom:0">
+          <button class="toggle-btn active" data-pfilter="ALL">All Top Cones</button>
+          <button class="toggle-btn" data-pfilter="H9">Inside H9 (AVT)</button>
+          <button class="toggle-btn" data-pfilter="LOWDEP">Low Ext-Deps (&lt;300)</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Single Gateway Module (@ <code>ce1560fb</code>)</th>
+              <th class="num">Cone Files</th>
+              <th class="num">Cone Lines</th>
+              <th class="num">Ext. Deps</th>
+              <th>Role</th>
+              <th>Headline Exported Theorems</th>
+            </tr>
+          </thead>
+          <tbody id="pr-islands-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>Macro Dominator Spine &amp; <code>Challenge.lean</code> Inversion</h2>
+        <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+          In <code>src/Main.lean</code>, <code>riemannHypothesis := Claim.zeta LFunction_ne_zero_of_half_lt_re</code>:
+          <code>MainConclusion</code> proves right-half-plane nonvanishing for <em>all</em> Dirichlet characters first
+          (<code>58,857</code> files), and <code>&zeta;(s)</code> specializes <code>N=1, &chi;=1</code> in <code>ClaimStrip.lean</code> (4-file cone).
+          Over half the entire repo (<strong>30,024 files, 51.01%</strong>) hangs exclusively beneath <code>EveryCharacterOfLiteratureOfVWin</code>.
+        </p>
+        <div id="spine-bars"></div>
+      </div>
+
+      <div class="card">
+        <h2>Conductor-Aspect Quasi-GRH Explorer (<code>q = x<sup>&alpha;_q</sup></code>)</h2>
+        <p style="color:var(--muted);font-size:0.86rem;margin-top:0">
+          Lean 4 kernel-verified closed form (<code>Theorems.lean</code> &sect;5):
+          <code>&theta;*(&tau;_k, &alpha;_q) = max((1 + &alpha;_q)/2, 2 + &alpha;_q &minus; &tau;_k/3)</code>,
+          hitting the tropical convexity barrier <code>&theta;* &ge; 1</code> at <code>&alpha;_q = 1</code> (<code>q = x</code>).
+        </p>
+        <div class="slider-box" style="padding:0.8rem 1rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.84rem">
+            <span>Twist Cap <code>&tau;_k</code>: <strong id="qgrh-tau-lbl">4.50</strong></span>
+            <span>Conductor Exp <code>&alpha;_q</code>: <strong id="qgrh-aq-lbl">0.25</strong></span>
+            <span>Optimal <code>&theta;*</code>: <strong id="qgrh-theta-lbl" style="font-family:var(--mono)">0.7500</strong></span>
+          </div>
+          <input type="range" id="qgrh-tau" min="2.0" max="6.5" step="0.05" value="4.50" style="margin-top:0.4rem" />
+          <input type="range" id="qgrh-aq" min="0.0" max="1.2" step="0.02" value="0.25" style="margin-top:0.25rem" />
+          <div id="qgrh-verdict" style="margin-top:0.45rem;font-size:0.82rem"></div>
+        </div>
+        <svg id="qgrh-svg" class="chart" viewBox="0 0 520 220"></svg>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (70 tests) &middot; MIT License
+    <code>seedhunterai/riemann-hypothesis-local-to-global</code> &middot; All numbers reproduced by <code>pytest -v</code> (76 tests + 11 Lean 4 theorems) &middot; MIT License
   </div>
 </footer>
 
@@ -761,6 +854,125 @@
         <div class="bar-track"><div class="bar-fill" style="width:${w.toFixed(1)}%;background:${color}"></div></div>
       </div>`;
   });
+
+  // --- Panel 7: Dominator PR Target Finder & Conductor-Aspect Quasi-GRH ---
+  const prIslands = [
+    ['Proofs.DivisorProofs.ToroidalCompactificationFanLogKodairaSpencerIso', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ToroidalCompactificationFanLogKodairaSpencerIso.lean', 1268, 353353, 1870, 'H9 (AVT)', 'logKodairaSpencerIso (1,267 deletable H9 files!)'],
+    ['ThirdPlaceSeries.MainTheoremPublishedInputsThird', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremPublishedInputsThird.lean', 587, 167221, 1579, 'H12', 'miStar_row_alt_alt, miStarRowClosing_alt_alt'],
+    ['KatoQuadraticCharacters.SphericalDecomposition.SphAtTw', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/KatoQuadraticCharacters/SphericalDecomposition/SphAtTw.lean', 580, 175509, 229, 'H12', 'vanishOrdL_of_zetaUr, WeilSphericalRecords.twoS'],
+    ['ThirdPlaceSeries.LinkNFam', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkNFam.lean', 564, 196788, 839, 'H12', 'linkedAt_linkN_of_boundAtTwoThree, final_of_alt'],
+    ['TemperedRepresentationTheory.PoincareLelong.PoincareLelongInv', 'src/Development/WeilBound/CoreStatements/TemperedRepresentationTheory/PoincareLelong/PoincareLelongInv.lean', 545, 49294, 267, 'Est. B/C', 'theorem poincareLelong, ptsAbsIntegrable'],
+    ['Proofs.DivisorProofs.RigidBoundaryChartsForFanUnitaryDatumStatement', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean', 517, 116994, 1024, 'H9 (AVT)', 'uPoinStX_sep, rigidForFan_holds'],
+    ['DivisibilityProofs.VolumeTheoremOfInputs', 'src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/VolumeTheoremOfInputs.lean', 472, 124253, 1139, 'Est. B/C', 'slopeLower_mono_top, volumeTheoremX_of_inputs'],
+    ['KunnethLefschetz.EtSideGood', 'src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/KunnethLefschetz/EtSideGood.lean', 447, 77145, 186, 'H12', 'diagEt3, etSide_sm, etFin'],
+    ['Proofs.DivisorProofs.ExistsTripleChartUnitaryBoundaryPointRigidStatement', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean', 422, 140230, 1036, 'H9 (AVT)', 'exists_tripleChart_unitary_boundary_pointRigid'],
+    ['IntegralStructures.Development', 'src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean', 367, 98399, 780, 'H12', 'galoisLocalGlobalStrong_of_geometry_lift'],
+    ['MoriwakiBigness.MoriwakiBigTheorem.Outright', 'src/Development/WeilBound/CoreStatements/AutomorphicKernels/MoriwakiBigness/MoriwakiBigTheorem/Outright.lean', 272, 35378, 419, 'Est. B/C', 'moriwakiBig_outright, hsUse_outright'],
+    ['Proofs.SatakeParameters.BundleBothPartsOfStandardKernelAndSixHypotheses', 'src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BundleBothPartsOfStandardKernelAndSixHypotheses.lean', 242, 63885, 619, 'H9 (AVT)', 'bundleBothPartsOfStandardKernel'],
+    ['Proofs.DivisorProofs.LeafDepthAllRecord', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LeafDepthAllRecord.lean', 230, 74251, 214, 'H9 (AVT)', 'leafDepthAllRecord'],
+  ];
+
+  let activePFilter = 'ALL';
+  function renderPRIslands() {
+    const q = document.getElementById('pr-search').value.trim().toLowerCase();
+    const tb = document.getElementById('pr-islands-tbody');
+    tb.innerHTML = '';
+    prIslands.forEach(([shortMod, path, files, lines, deps, role, syms]) => {
+      if (activePFilter === 'H9' && !role.includes('H9')) return;
+      if (activePFilter === 'LOWDEP' && deps >= 300) return;
+      const hay = `${shortMod} ${path} ${role} ${syms}`.toLowerCase();
+      if (q && !hay.includes(q)) return;
+      const cls = role.includes('H9') ? 'replaced' : (deps < 300 ? 'slack' : 'warn');
+      tb.innerHTML += `
+        <tr>
+          <td><a href="${GH_BASE}${path}" target="_blank" rel="noopener"><code>${esc(shortMod)}</code> &nearr;</a></td>
+          <td class="num"><strong>${files.toLocaleString()}</strong></td>
+          <td class="num">${lines.toLocaleString()}</td>
+          <td class="num">${deps.toLocaleString()}</td>
+          <td><span class="badge ${cls}">${esc(role)}</span></td>
+          <td><code>${esc(syms)}</code></td>
+        </tr>`;
+    });
+  }
+  document.getElementById('pr-search').addEventListener('input', renderPRIslands);
+  document.querySelectorAll('[data-pfilter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-pfilter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activePFilter = btn.dataset.pfilter;
+      renderPRIslands();
+    });
+  });
+  renderPRIslands();
+
+  const spineNodes = [
+    ['CharacterBoxes.MainConclusion (Dirichlet GRH core)', 58853, 99.99, '#58a6ff'],
+    ['ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin', 30024, 51.01, '#bc8cff'],
+    ['ThirdPlaceSeries.SiegelEisensteinSecondTermHypotheses', 15677, 26.64, '#39c5cf'],
+    ['DenseThresholdCases.VwinOfRow (H9 window consumer)', 4371, 7.43, '#d29922'],
+    ['ThirdPlaceSeries.TopCovolSlim2Use', 3591, 6.10, '#3fb950'],
+    ['ThirdPlaceSeries.HypothesesNonemptyOfUnramifiedExponents', 3196, 5.43, '#3fb950'],
+    ['GeometricFlagBases.GeometricRealizationOfWeightOne', 3038, 5.16, '#58a6ff'],
+    ['HilbertSamuelApplications.AhSlimU (Moriwaki bigness)', 2217, 3.77, '#f85149'],
+  ];
+  const spineEl = document.getElementById('spine-bars');
+  spineNodes.forEach(([label, files, pct, color]) => {
+    spineEl.innerHTML += `
+      <div class="bar-row">
+        <div class="bar-meta">
+          <span><code>${esc(label)}</code></span>
+          <span style="font-family:var(--mono);color:var(--muted)">${files.toLocaleString()} (${pct.toFixed(2)}%)</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.max(2.0, pct)}%;background:${color}"></div></div>
+      </div>`;
+  });
+
+  function renderQGRH() {
+    const tau = parseFloat(document.getElementById('qgrh-tau').value);
+    const aq = parseFloat(document.getElementById('qgrh-aq').value);
+    const convFloor = 0.5 * (1.0 + aq);
+    const twistBranch = 2.0 + aq - tau / 3.0;
+    const theta = Math.max(convFloor, twistBranch);
+    const kink = 4.5 + 1.5 * aq;
+
+    document.getElementById('qgrh-tau-lbl').textContent = tau.toFixed(2);
+    document.getElementById('qgrh-aq-lbl').textContent = aq.toFixed(2);
+    const thEl = document.getElementById('qgrh-theta-lbl');
+    thEl.textContent = theta.toFixed(4);
+    thEl.style.color = theta < 0.9999 ? 'var(--green)' : 'var(--red)';
+
+    let vHtml = '';
+    if (aq >= 0.9999) {
+      vHtml = `<span class="badge crit">CONVEXITY BARRIER (&alpha;_q &ge; 1)</span> &nbsp; Duals <code>table_collision=1/2, codim_span_q=1/2</code> force <code>&theta;* &ge; ${(convFloor).toFixed(3)} &ge; 1</code> for all <code>&tau;_k</code>.`;
+    } else if (theta >= 0.9999) {
+      vHtml = `<span class="badge crit">TWIST-LIMITED (&theta;* &ge; 1)</span> &nbsp; Need <code>&tau;_k &gt; ${(3 + 3 * aq).toFixed(2)}</code> at <code>&alpha;_q=${aq.toFixed(2)}</code>.`;
+    } else if (tau <= kink + 1e-6) {
+      vHtml = `<span class="badge slack">QUASI-GRH TWIST BRANCH (&theta;* &lt; 1)</span> &nbsp; Farkas duals: <code>table_modulus_q=2/3, codim_span_q=1/3, twist_cap=1/3</code>.`;
+    } else {
+      vHtml = `<span class="badge replaced">CONDUCTOR FLOOR SATURATED (&theta;* = (1+&alpha;_q)/2)</span> &nbsp; Kink <code>&tau;_k = ${kink.toFixed(2)}</code> passed; duals <code>(1/2, 1/2)</code>.`;
+    }
+    document.getElementById('qgrh-verdict').innerHTML = vHtml;
+
+    // Plot theta*(tau, aq) across tau in [2.0, 6.5] -> x in [50, 495], y in [0.4, 1.5] -> [190, 20]
+    const xM = t => 50 + ((t - 2.0) / 4.5) * 445;
+    const yM = y => 190 - ((Math.min(1.5, Math.max(0.4, y)) - 0.4) / 1.1) * 170;
+    const yStart = Math.max(convFloor, 2.0 + aq - 2.0 / 3.0);
+    const kClamped = Math.min(6.5, Math.max(2.0, kink));
+
+    document.getElementById('qgrh-svg').innerHTML = `
+      <line x1="50" y1="${yM(1.0)}" x2="495" y2="${yM(1.0)}" stroke="#f85149" stroke-dasharray="4,4" stroke-width="1.1" />
+      <line x1="50" y1="${yM(convFloor)}" x2="495" y2="${yM(convFloor)}" stroke="#bc8cff" stroke-dasharray="3,3" stroke-width="1.1" />
+      <polyline fill="none" stroke="#3fb950" stroke-width="2.8"
+        points="${xM(2.0)},${yM(yStart)} ${xM(kClamped)},${yM(convFloor)} ${xM(6.5)},${yM(convFloor)}" />
+      <circle cx="${xM(tau)}" cy="${yM(theta)}" r="6" fill="#58a6ff" stroke="#fff" stroke-width="2" />
+      <text x="56" y="${yM(1.0)-5}" fill="#ff948e" font-size="10.5" font-family="monospace">&theta; = 1.0 (trivial line)</text>
+      <text x="290" y="${yM(convFloor)-6}" fill="#e2ccff" font-size="10.5" font-family="monospace">floor (1+&alpha;_q)/2 = ${convFloor.toFixed(3)}</text>
+      <text x="215" y="212" fill="#8fa3bf" font-size="11">Twist Cap &tau;_k &isin; [2.0, 6.5] at &alpha;_q = ${aq.toFixed(2)}</text>
+    `;
+  }
+  document.getElementById('qgrh-tau').addEventListener('input', renderQGRH);
+  document.getElementById('qgrh-aq').addEventListener('input', renderQGRH);
+  renderQGRH();
 </script>
 </body>
 </html>

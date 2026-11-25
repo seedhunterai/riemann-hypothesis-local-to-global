@@ -1,6 +1,6 @@
 # Auditing the Alpoge–Claude Riemann Hypothesis Proof: The Local-to-Global Step
 
-**Explicit derivation, structural resolution of §6.3, `(H0)–(H12)` Lean 4 Rosetta Stone, and 70-test verification suite for the Riemann zeta function and Lean blueprint.**
+**Explicit derivation, structural resolution of §6.3, `(H0)–(H12)` Lean 4 Rosetta Stone, Dominator PR Finder, and 76-test + 11-theorem Lean 4 verification suite.**
 
 [![Verify Mathematical & Computational Suite](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml/badge.svg)](https://github.com/seedhunterai/riemann-hypothesis-local-to-global/actions/workflows/verify.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -9,7 +9,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 
 - **Full Monograph:** [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md)
 - **Live Interactive Explorer:** **[https://seedhunterai.github.io/riemann-hypothesis-local-to-global/](https://seedhunterai.github.io/riemann-hypothesis-local-to-global/)** *(source: [`docs/index.html`](docs/index.html))*
-- **Zero-`sorry` Lean 4 Proofs:** [`lean/LocalToGlobal/Theorems.lean`](lean/LocalToGlobal/Theorems.lean) *(8 kernel-checked theorems, zero external dependencies, `lake build` in `<1s`)*
+- **Zero-`sorry` Lean 4 Proofs:** [`lean/LocalToGlobal/Theorems.lean`](lean/LocalToGlobal/Theorems.lean) *(11 kernel-checked theorems including Conductor-Aspect Quasi-GRH, zero external dependencies, `lake build` in `~1s`)*
   - **Part I (§§0–8):** Explicit derivation of the zero-side Mellin/Landau window reduction (`[D]`), the Stuhler–Grayson slope inequality engine (`[D]`), the main inequality `(M)` (`[Q]`), and the audit of `(H0)–(H12)` (`[H]`).
   - **Part II (§§9–13):** Proved theorems (`[D]`) and exact arbitrary-precision computational certificates (`[C]`) on:
     1. **§9 — Determinant Identities vs. Padé Noise (§6.3.2):** Exact triangular basis invariance (Theorem 9.1 `[D]`), $`208`$-digit unshifted hyperfactorial identity, prime-certified split-prime counterexamples refuting single-determinant local factorization at shifted scales (Proposition 9.2 `[D]`), $`51`$-scale Padé annihilation via the zeroth Fitting ideal (`[C]`), Cauchy–Binet kernel trap & Malmsten–Kronecker lemniscate identity (Proposition 9.3 `[D]`), and rank-deficient ($`r < D`$) modular Hermite Normal Form spans (`[C]`).
@@ -18,6 +18,7 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
     4. **§12 — Polyhedral Decompilation & Window-Free Quasi-RH:** Skolem quantifier-poset verification, hidden-constraint LP gap, and exact rational Farkas certification of $`\theta^*(\tau_k)=\max(\tfrac12,\,2-\tfrac{\tau_k}{3})`$ on the blueprint model (Proposition 12.1 `[D]`), plus the Guth–Maynard (`30/13`) zero-density polyhedron saddle (`[C]`).
     5. **Live Upstream Lean 4 DAG Audit (`upstream_lean_auditor.py`):** Direct streaming audit of all **58,880 `.lean` files** (`13.93M` lines, `931 MB`) in [`leanprover-community/riemann-hypothesis`](https://github.com/leanprover-community/riemann-hypothesis) (`ce1560fb`), verifying the exact acyclic import DAG from `src/Main.lean` (`58,858` reachable modules, `359,031` edges, max chain depth `95`, `0` reachable `sorry`s, `0` custom axioms) and mapping the codebase volume onto `(H0)–(H12)`.
     6. **Verified 16-Row Rosetta Stone & `H9` Boundary Cut-Set (`upstream_cutset_rosetta.py`):** Exact file/line/signature permalinks mapping `Main`, `Lemmas 1.1–1.2`, `Lemma 2.1`, `(H0)–(H12)`, and `Estimates B & C` onto `ce1560fb`, plus the exact cross-boundary vertex cut-set of `Development.AbelianVarietyTheory` (`10,292` direct gateway modules = **`39.95%`** of its `25,765` modules across `33,148` incoming edges).
+    7. **Dominator-Tree `"PR Target Finder"` & `Challenge.lean` Conductor-Aspect Quasi-GRH (`upstream_dominator_and_challenge.py`):** Exact DAG dominator decomposition of all `58,858` reachable modules identifying **`4,413` certified `0`-side-entrance refactoring islands** (`155` PR-sized cones of `25–600` files, including `1,268`-file encapsulated islands inside `H9`), Nov 20 $\to$ `ce1560fb` clumping/debt telemetry (`175,187` $\to$ `58,880` files, `627` `set_option backward` files), the `src/Challenge.lean` 5-theorem inversion (`riemannHypothesis := Claim.zeta LFunction_ne_zero_of_half_lt_re`), and the Lean 4 kernel-verified Conductor-Aspect ($`q = x^{\alpha_q}`$) Quasi-GRH closed form $`\theta^*(\tau_k,\alpha_q)=\max\!\left(\tfrac{1+\alpha_q}{2},\,2+\alpha_q-\tfrac{\tau_k}{3}\right)`$.
 
 ---
 
@@ -60,13 +61,21 @@ Companion monograph and reproducible exact-arithmetic codebase examining the loc
 | **Estimates B & C** | §4 | [`EveryCharacterOfLiteratureOfVWin.lean#L1083`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean#L1083) | `every_character_of_literature_of_vWin` | `AUX_PRIME_SUPPLY` |
 | **`(H12)`** | §5.1 | [`ZeroFreeAllOfTopG.lean#L1259`](https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean#L1259) | `theorem zeroFreeAll_of_topG ... : ZeroFreeAll` | `SCALE_UNIFORMITY_QUANTIFIER` |
 
+### Contributor `"PR Target Finder"` (Dominator Islands) & `Challenge.lean` Inversion
+
+Scanning the exact immediate-dominator tree $`T_{\mathrm{dom}}`$ from `src/Main.lean` ([`dominator_challenge_snapshot.json`](dominator_challenge_snapshot.json)) isolates **`4,413` certified `1`-vertex-cut islands** (`0` interior side-entrances across all `359,031` edges), plus tracks the community cleanup from the Nov 20 baseline (`175,187` files / `17.37M` lines $\to$ `58,880` files / `13.93M` lines = **`-66.39%` files**, via `12,024` auto-clumped files holding `63,816` clump members; `627` `set_option backward` and `3` `exact_by_kernel` debt files remaining):
+
+- **Macro Dominator Spine & `Challenge.lean` Inversion:** In `src/Main.lean`, `riemannHypothesis := Claim.zeta LFunction_ne_zero_of_half_lt_re` — `MainConclusion` proves `DirichletLNonvanishingRightOfHalf` across **`58,857` files (`99.998%`)** first, and $`\zeta(s)`$ specializes $`N=1, \chi=1`$ in `ClaimStrip.lean` (`4`-file cone). Over half the entire repo (**`30,024` files, `51.01%`**) hangs strictly beneath `EveryCharacterOfLiteratureOfVWin`, and **`15,677` files (`26.64%`)** hang strictly beneath `SiegelEisensteinSecondTermHypotheses`.
+- **Sample Atomic PR Cones (`side_entrances = 0`):** `ToroidalCompactificationFanLogKodairaSpencerIso` (**`1,268` files / `353k` lines** strictly inside `H9`!), `MainTheoremPublishedInputsThird` (`587` files), `SphAtTw` (`580` files, only `229` ext. deps), `PoincareLelongInv` (`545` files proving `poincareLelong`, `267` ext. deps), `EtSideGood` (`447` files, `186` ext. deps), and `MoriwakiBigTheorem.Outright` (`272` files proving `moriwakiBig_outright`).
+- **Conductor-Aspect ($`q = x^{\alpha_q}`$) Window-Free Quasi-GRH (`Theorems.lean` §5 `[D]`):** Extending `QuasiRHModel` to primitive Dirichlet $`L(s,\chi)`$ of conductor $`q = x^{\alpha_q}`$ yields the exact rational Farkas closed form $`\theta^*(\tau_k,\alpha_q) = \max\!\left(\tfrac{1+\alpha_q}{2},\, 2 + \alpha_q - \tfrac{\tau_k}{3}\right)`$, hitting the tropical convexity barrier $`\theta^* \ge 1`$ at $`\alpha_q = 1`$ ($`q = x`$).
+
 ---
 
 ## Epistemic Discipline
 
 Every claim in [`LOCAL_TO_GLOBAL.md`](LOCAL_TO_GLOBAL.md) carries an explicit status tag:
 - **`[D]`** — Proved unconditionally in the text for all parameter values.
-- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`70` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
+- **`[C]`** — Certified by exact integer or exact `Fraction` arithmetic in this repository (`76` automated tests). Finite-range computational findings are never overstated as universal theorems without proof.
 - **`[Q]` / `[H]`** — Quoted statements and unproved black-box hypotheses from M. Rubinstein's public reconstruction (*working draft v2*, 22 November 2026). This repository does **not** prove `(H0)–(H12)` and does **not** claim an independent proof of RH.
 
 ---
@@ -78,7 +87,7 @@ pip install -r requirements.txt
 pytest -v
 ```
 
-Running `pytest -v` executes all **70 verification tests** across 12 test modules in ~45 seconds.
+Running `pytest -v` executes all **76 verification tests** across 13 test modules in ~45 seconds.
 
 ### Key Standalone Reports
 
@@ -117,4 +126,8 @@ python upstream_lean_auditor.py --repo /path/to/riemann-hypothesis --out upstrea
 # 16-row (H0)-(H12) Rosetta Stone & AbelianVarietyTheory boundary cut-set audit
 python upstream_cutset_rosetta.py --snapshot rosetta_cutset_snapshot.json
 python upstream_cutset_rosetta.py --repo /path/to/riemann-hypothesis --out rosetta_cutset_snapshot.json
+
+# Dominator-tree PR Target Finder, Challenge.lean cone split, & Conductor Quasi-GRH
+python upstream_dominator_and_challenge.py --snapshot dominator_challenge_snapshot.json
+python upstream_dominator_and_challenge.py --repo /path/to/riemann-hypothesis --out dominator_challenge_snapshot.json
 ```

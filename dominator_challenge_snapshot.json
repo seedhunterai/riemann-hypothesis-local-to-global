@@ -1,0 +1,1229 @@
+{
+  "upstream_repo": "leanprover-community/riemann-hypothesis",
+  "commit_sha": "ce1560fba43e59629abdf3c27a279218fad9f77a",
+  "commit_short": "ce1560fb",
+  "shrinkage_and_code_health": {
+    "nov20_original_files": 175187,
+    "nov20_original_lines": 17374215,
+    "current_all_lean_files": 58880,
+    "current_src_files": 58871,
+    "current_src_lines": 13933114,
+    "file_reduction_pct_vs_nov20": 66.39,
+    "line_reduction_pct_vs_nov20": 19.81,
+    "clumped_files_count": 12024,
+    "clump_member_markers_count": 63816,
+    "reconstructed_preclump_src_modules": 110663,
+    "agents_md_debt_set_option_backward_files": 627,
+    "agents_md_debt_exact_by_kernel_files": 3
+  },
+  "challenge_5_theorem_split": {
+    "comparator_targets": [
+      {
+        "theorem": "LFunction_ne_zero_of_half_lt_re",
+        "statement_type": "DirichletLNonvanishingRightOfHalf",
+        "proof_term_in_Main": "UpperTheory.FinalTheorems.everyCharacter",
+        "direct_provider": "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion",
+        "reachable_src_files": 58857,
+        "reachable_lines": 13932034
+      },
+      {
+        "theorem": "riemannHypothesis",
+        "statement_type": "RiemannHypothesis",
+        "proof_term_in_Main": "Claim.zeta LFunction_ne_zero_of_half_lt_re",
+        "direct_provider": "ClaimStrip + MainConclusion (specializes N=1, chi=1!)",
+        "reachable_src_files": 58857,
+        "reachable_lines": 13932034
+      },
+      {
+        "theorem": "riemannZeta_eq_zero_re",
+        "statement_type": "RiemannZetaZerosOnLine",
+        "proof_term_in_Main": "riemannHypothesis",
+        "direct_provider": "Definitional alias of riemannHypothesis",
+        "reachable_src_files": 58857,
+        "reachable_lines": 13932034
+      },
+      {
+        "theorem": "LFunction_eq_zero_re",
+        "statement_type": "DirichletLZerosOnLine",
+        "proof_term_in_Main": "Claim.strip LFunction_ne_zero_of_half_lt_re",
+        "direct_provider": "ClaimStrip + MainConclusion (functional-equation reflection)",
+        "reachable_src_files": 58857,
+        "reachable_lines": 13932034
+      },
+      {
+        "theorem": "LFunction_eq_zero_re_of_isPrimitive",
+        "statement_type": "PrimitiveDirichletLZerosOnLine",
+        "proof_term_in_Main": "exact LFunction_eq_zero_re N chi s h0 h1 hz",
+        "direct_provider": "2-line specialization of LFunction_eq_zero_re",
+        "reachable_src_files": 58857,
+        "reachable_lines": 13932034
+      }
+    ],
+    "statements_cone_files": 1,
+    "claim_strip_total_cone_files": 4,
+    "claim_strip_total_cone_lines": 240,
+    "half_plane_meromorphic_detour_cone_files": 1,
+    "half_plane_meromorphic_detour_cone_lines": 121,
+    "claim_strip_exclusive_outside_main_conclusion_files": [],
+    "detour_overlap_with_main_conclusion_files": 1
+  },
+  "dominator_pr_finder": {
+    "total_reachable_nodes": 58858,
+    "max_dominator_tree_depth": 15,
+    "nontrivial_dominators_ge_2_files": 4413,
+    "pr_sized_islands_25_to_600_count": 155,
+    "macro_dominator_spine": [
+      {
+        "module": "Main",
+        "idom": "Main",
+        "dominated_files": 58858,
+        "dominated_lines": 13932056,
+        "pct_of_reachable": 100.0
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion",
+        "idom": "Main",
+        "dominated_files": 58853,
+        "dominated_lines": 13931794,
+        "pct_of_reachable": 99.99
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin",
+        "idom": "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion",
+        "dominated_files": 30024,
+        "dominated_lines": 7329847,
+        "pct_of_reachable": 51.01
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.SiegelEisensteinSecondTermHypotheses",
+        "idom": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin",
+        "dominated_files": 15677,
+        "dominated_lines": 4193717,
+        "pct_of_reachable": 26.64
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.VwinOfRow",
+        "idom": "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion",
+        "dominated_files": 4371,
+        "dominated_lines": 1060362,
+        "pct_of_reachable": 7.43
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.TopCovolSlim2Use",
+        "idom": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin",
+        "dominated_files": 3591,
+        "dominated_lines": 912891,
+        "pct_of_reachable": 6.1
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.HypothesesNonemptyOfUnramifiedExponents",
+        "idom": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.SiegelEisensteinSecondTermHypotheses",
+        "dominated_files": 3196,
+        "dominated_lines": 969381,
+        "pct_of_reachable": 5.43
+      },
+      {
+        "module": "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations.IntegralStructures.GeometricFlagBases.GeometricRealizationOfWeightOne",
+        "idom": "Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion",
+        "dominated_files": 3038,
+        "dominated_lines": 690495,
+        "pct_of_reachable": 5.16
+      },
+      {
+        "module": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.HilbertSamuelApplications.AhSlimU",
+        "idom": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.TopCovolSlim2Use",
+        "dominated_files": 2217,
+        "dominated_lines": 522249,
+        "pct_of_reachable": 3.77
+      },
+      {
+        "module": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.HilbertSamuelApplications.DeepStROfUse",
+        "idom": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.HilbertSamuelApplications.AhSlimU",
+        "dominated_files": 2206,
+        "dominated_lines": 518059,
+        "pct_of_reachable": 3.75
+      },
+      {
+        "module": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.HilbertSamuelApplications.GoodTowerVolumeTheoremBis",
+        "idom": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.HilbertSamuelApplications.DeepStROfUse",
+        "dominated_files": 1293,
+        "dominated_lines": 320584,
+        "pct_of_reachable": 2.2
+      },
+      {
+        "module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ToroidalCompactificationFanLogKodairaSpencerIso",
+        "idom": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin",
+        "dominated_files": 1268,
+        "dominated_lines": 353353,
+        "pct_of_reachable": 2.15
+      }
+    ],
+    "top_20_pr_ready_islands": [
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.MainTheoremPublishedInputsThird",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremPublishedInputsThird.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 587,
+        "deletable_internal_files": 586,
+        "dominated_lines": 167221,
+        "gateway_lines": 1237,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1579,
+        "headline_declarations": [
+          "theorem miStar_row_alt_alt",
+          "theorem miStarRowClosing_alt_alt",
+          "theorem miStarRow_alt_alt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremPublishedInputsThird.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.KatoQuadraticCharacters.SphericalDecomposition.SphAtTw",
+        "path": "src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/KatoQuadraticCharacters/SphericalDecomposition/SphAtTw.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 580,
+        "deletable_internal_files": 579,
+        "dominated_lines": 175509,
+        "gateway_lines": 779,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 229,
+        "headline_declarations": [
+          "theorem repIso_symm_srcL",
+          "theorem vanishOrdL_of_zetaUr",
+          "theorem UpperTheory.V.Z.Kato.WeilSphericalRecords.twoS"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/KatoQuadraticCharacters/SphericalDecomposition/SphAtTw.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.LinkNFam",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkNFam.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 564,
+        "deletable_internal_files": 563,
+        "dominated_lines": 196788,
+        "gateway_lines": 1694,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 839,
+        "headline_declarations": [
+          "theorem linkN_of_boundAtTwoThree_slot",
+          "theorem linkedAt_linkN_of_boundAtTwoThree",
+          "theorem final_of_alt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkNFam.lean"
+      },
+      {
+        "gateway_module": "Development.WeilBound.CoreStatements.TemperedRepresentationTheory.PoincareLelong.PoincareLelongInv",
+        "path": "src/Development/WeilBound/CoreStatements/TemperedRepresentationTheory/PoincareLelong/PoincareLelongInv.lean",
+        "role": "Est_BC_Spectrum_And_Weil",
+        "dominated_files": 545,
+        "deletable_internal_files": 544,
+        "dominated_lines": 49294,
+        "gateway_lines": 1274,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 267,
+        "headline_declarations": [
+          "theorem poincareLelong_of_leaves",
+          "theorem ptsAbsIntegrable",
+          "theorem poincareLelong"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/WeilBound/CoreStatements/TemperedRepresentationTheory/PoincareLelong/PoincareLelongInv.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.RigidBoundaryChartsForFanUnitaryDatumStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 517,
+        "deletable_internal_files": 516,
+        "dominated_lines": 116994,
+        "gateway_lines": 1324,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1024,
+        "headline_declarations": [
+          "theorem uPoinStX_sep",
+          "theorem uStB",
+          "theorem rigidForFan_holds"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicSpectrum.Proofs.DivisibilityProofs.VolumeTheoremOfInputs",
+        "path": "src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/VolumeTheoremOfInputs.lean",
+        "role": "Est_BC_Spectrum_And_Weil",
+        "dominated_files": 472,
+        "deletable_internal_files": 471,
+        "dominated_lines": 124253,
+        "gateway_lines": 1712,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1139,
+        "headline_declarations": [
+          "theorem coefficients",
+          "theorem slopeLower_mono_top",
+          "theorem volumeTheoremX_of_inputs"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/VolumeTheoremOfInputs.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations.KunnethLefschetz.EtSideGood",
+        "path": "src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/KunnethLefschetz/EtSideGood.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 447,
+        "deletable_internal_files": 446,
+        "dominated_lines": 77145,
+        "gateway_lines": 1809,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 186,
+        "headline_declarations": [
+          "theorem diagEt3",
+          "theorem etSide_sm",
+          "theorem etFin"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/KunnethLefschetz/EtSideGood.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ExistsTripleChartUnitaryBoundaryPointRigidStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 422,
+        "deletable_internal_files": 421,
+        "dominated_lines": 140230,
+        "gateway_lines": 1788,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1036,
+        "headline_declarations": [
+          "theorem boundary_eq",
+          "theorem uPre_of_boundary_pointRigid",
+          "theorem _root_.GlobalTheory.T.exists_tripleChart_unitary_boundary_pointRigid"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.ExistsBaseLatticeOfPrime",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ExistsBaseLatticeOfPrime.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 374,
+        "deletable_internal_files": 373,
+        "dominated_lines": 150347,
+        "gateway_lines": 1620,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1660,
+        "headline_declarations": [
+          "theorem org_of_kept_alt",
+          "theorem lv3Mv_extensionWithOrigin_and_nEog",
+          "theorem memberE_extensionWithOrigin"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ExistsBaseLatticeOfPrime.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations.IntegralStructures.Development",
+        "path": "src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 367,
+        "deletable_internal_files": 366,
+        "dominated_lines": 98399,
+        "gateway_lines": 1828,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 780,
+        "headline_declarations": [
+          "theorem rest",
+          "theorem galoisLocalGlobal_of_geometry_lift",
+          "theorem galoisLocalGlobalStrong_of_geometry_lift"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.AtChoice",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/AtChoice.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 322,
+        "deletable_internal_files": 321,
+        "dominated_lines": 78923,
+        "gateway_lines": 1671,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 716,
+        "headline_declarations": [
+          "theorem at_choice_alt",
+          "theorem sLp_sO_hTF_of_siegelWeil",
+          "theorem lg1_sLp_sO_hTF"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/AtChoice.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.TopPlug",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopPlug.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 286,
+        "deletable_internal_files": 285,
+        "dominated_lines": 80485,
+        "gateway_lines": 1263,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 512,
+        "headline_declarations": [
+          "theorem GlobalTheory.Fc.goal_of_shape_of_hyps",
+          "theorem UpperTheory.Top.zero_free_all_of_green_v_win",
+          "theorem UpperTheory.Top.every_character_of_green_v_win"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/TopPlug.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.RowHServOfLinkStatement",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/RowHServOfLinkStatement.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 281,
+        "deletable_internal_files": 280,
+        "dominated_lines": 73235,
+        "gateway_lines": 786,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 715,
+        "headline_declarations": [
+          "theorem linkR_stdTie_entry",
+          "theorem servH_row_linkR_alt",
+          "theorem row_hServ_of_link_alt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/RowHServOfLinkStatement.lean"
+      },
+      {
+        "gateway_module": "Development.WeilBound.CoreStatements.AutomorphicKernels.MoriwakiBigness.MoriwakiBigTheorem.Outright",
+        "path": "src/Development/WeilBound/CoreStatements/AutomorphicKernels/MoriwakiBigness/MoriwakiBigTheorem/Outright.lean",
+        "role": "Est_BC_Spectrum_And_Weil",
+        "dominated_files": 272,
+        "deletable_internal_files": 271,
+        "dominated_lines": 35378,
+        "gateway_lines": 1666,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 419,
+        "headline_declarations": [
+          "theorem main",
+          "theorem moriwakiBig_outright",
+          "theorem hsUse_outright"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/WeilBound/CoreStatements/AutomorphicKernels/MoriwakiBigness/MoriwakiBigTheorem/Outright.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.UnitaryThreeInputsOfLiterature",
+        "path": "src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/UnitaryThreeInputsOfLiterature.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 256,
+        "deletable_internal_files": 255,
+        "dominated_lines": 72402,
+        "gateway_lines": 1007,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 230,
+        "headline_declarations": [
+          "theorem adjoint_automorphy_w_of_printed_hida_window",
+          "theorem unitary_three_automorphy_dense_of_prints_and_row",
+          "theorem unitary_three_automorphy_dense_of_prints"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/UnitaryThreeInputsOfLiterature.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations.BaseChangeDescent.BcBackOffT",
+        "path": "src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/BaseChangeDescent/BcBackOffT.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 254,
+        "deletable_internal_files": 253,
+        "dominated_lines": 78235,
+        "gateway_lines": 1910,
+        "incoming_callers_to_gateway": 5,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 571,
+        "headline_declarations": [
+          "theorem weakAll",
+          "theorem desc",
+          "theorem descOffT"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/BaseChangeDescent/BcBackOffT.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.FourierCoefficientFitOfJoin",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/FourierCoefficientFitOfJoin.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 248,
+        "deletable_internal_files": 247,
+        "dominated_lines": 80785,
+        "gateway_lines": 1713,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 900,
+        "headline_declarations": [
+          "theorem wt_tie_alt",
+          "theorem fittedFunction_at_zero_close_alt",
+          "theorem fourier_coefficient_fit_of_join_alt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/FourierCoefficientFitOfJoin.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.GeoStOfPageSt",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/GeoStOfPageSt.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 233,
+        "deletable_internal_files": 232,
+        "dominated_lines": 78132,
+        "gateway_lines": 1553,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 307,
+        "headline_declarations": [
+          "theorem hyp_concl_at_run",
+          "theorem runsHold_of_ties",
+          "theorem geoSt_of_pageSt_alt"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/GeoStOfPageSt.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.FunctionalsSeparateOfHoweUnramOfSiegelWeil",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/FunctionalsSeparateOfHoweUnramOfSiegelWeil.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 223,
+        "deletable_internal_files": 222,
+        "dominated_lines": 83088,
+        "gateway_lines": 1278,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 911,
+        "headline_declarations": [
+          "theorem twist_core_surjective_of_local_components",
+          "theorem real_functionals_separate_of_hypothesis",
+          "theorem functionalsSeparate_of_howeUnram_of_siegelWeil"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/FunctionalsSeparateOfHoweUnramOfSiegelWeil.lean"
+      },
+      {
+        "gateway_module": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.LocalTypeDictionary.ThetaLiftRowPropertiesConj",
+        "path": "src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/ThetaLiftRowPropertiesConj.lean",
+        "role": "H12_Assembly_And_Windows",
+        "dominated_files": 222,
+        "deletable_internal_files": 221,
+        "dominated_lines": 81949,
+        "gateway_lines": 1181,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 804,
+        "headline_declarations": [
+          "theorem proj_thDn",
+          "theorem CompanionTheory.Member.twisted_period_identity_local",
+          "theorem thetaLift_row_properties_conj"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/ThetaLiftRowPropertiesConj.lean"
+      }
+    ],
+    "top_12_avt_h9_encapsulated_islands": [
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ToroidalCompactificationFanLogKodairaSpencerIso",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ToroidalCompactificationFanLogKodairaSpencerIso.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 1268,
+        "deletable_internal_files": 1267,
+        "dominated_lines": 353353,
+        "gateway_lines": 1025,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1870,
+        "headline_declarations": [
+          "theorem hasLogKS",
+          "theorem GlobalTheory.RigChart.toroidalForFanKS_of_rigidForFan",
+          "theorem toroidalForFanKS"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ToroidalCompactificationFanLogKodairaSpencerIso.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.RigidBoundaryChartsForFanUnitaryDatumStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 517,
+        "deletable_internal_files": 516,
+        "dominated_lines": 116994,
+        "gateway_lines": 1324,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1024,
+        "headline_declarations": [
+          "theorem uPoinStX_sep",
+          "theorem uStB",
+          "theorem rigidForFan_holds"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.ExistsTripleChartUnitaryBoundaryPointRigidStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 422,
+        "deletable_internal_files": 421,
+        "dominated_lines": 140230,
+        "gateway_lines": 1788,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 1036,
+        "headline_declarations": [
+          "theorem boundary_eq",
+          "theorem uPre_of_boundary_pointRigid",
+          "theorem _root_.GlobalTheory.T.exists_tripleChart_unitary_boundary_pointRigid"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.SatakeParameters.BundleBothPartsOfStandardKernelAndSixHypotheses",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BundleBothPartsOfStandardKernelAndSixHypotheses.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 242,
+        "deletable_internal_files": 241,
+        "dominated_lines": 63885,
+        "gateway_lines": 1541,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 619,
+        "headline_declarations": [
+          "theorem modelsAt_tr",
+          "theorem modelsAt_bpt",
+          "theorem servH_row"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BundleBothPartsOfStandardKernelAndSixHypotheses.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.LeafDepthAllRecord",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LeafDepthAllRecord.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 230,
+        "deletable_internal_files": 229,
+        "dominated_lines": 74251,
+        "gateway_lines": 1817,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 214,
+        "headline_declarations": [
+          "theorem leafDepthLevel_run",
+          "theorem GlobalTheory.RunDepth.leafDepth_all_run",
+          "theorem GlobalTheory.BigOn.leafDepth_all_record"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LeafDepthAllRecord.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.SeparationNormalizedBlowupUnitaryCompactificatioStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SeparationNormalizedBlowupUnitaryCompactificatioStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 179,
+        "deletable_internal_files": 178,
+        "dominated_lines": 38650,
+        "gateway_lines": 1091,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 490,
+        "headline_declarations": [
+          "theorem mem_of_zpow_mem",
+          "theorem exists_extend_smul",
+          "theorem GlobalTheory.USep.sepB_of_normBl"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/SeparationNormalizedBlowupUnitaryCompactificatioStatement.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.HeightProofs.ExistsThresholdRunHolds",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/HeightProofs/ExistsThresholdRunHolds.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 177,
+        "deletable_internal_files": 176,
+        "dominated_lines": 52517,
+        "gateway_lines": 536,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 568,
+        "headline_declarations": [
+          "theorem indexBoundConclusion_secondNorm_iff",
+          "theorem inputs4_of_net",
+          "theorem runHolds_of_parOK"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/HeightProofs/ExistsThresholdRunHolds.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.UnitaryIntegralCompactificationsExist",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/UnitaryIntegralCompactificationsExist.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 130,
+        "deletable_internal_files": 129,
+        "dominated_lines": 32150,
+        "gateway_lines": 1498,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 420,
+        "headline_declarations": [
+          "theorem exists_baseRing_away",
+          "theorem integral_normal_model_dense",
+          "theorem umin_theta_compactification_exists"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/UnitaryIntegralCompactificationsExist.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.InertiaEigenvalues.SelmerLengthBoundAtPoint",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/SelmerLengthBoundAtPoint.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 119,
+        "deletable_internal_files": 118,
+        "dominated_lines": 35619,
+        "gateway_lines": 1200,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 74,
+        "headline_declarations": [
+          "theorem langRecCore_of_artinReciprocity",
+          "theorem finCore",
+          "theorem main"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/SelmerLengthBoundAtPoint.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.InertiaEigenvalues.LiftSurjectionGoodCrystallineLattices",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/LiftSurjectionGoodCrystallineLattices.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 109,
+        "deletable_internal_files": 108,
+        "dominated_lines": 38401,
+        "gateway_lines": 1416,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 99,
+        "headline_declarations": [
+          "theorem phi_FilMM_mem",
+          "theorem zetaBound",
+          "theorem liftF_of_isGood"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/InertiaEigenvalues/LiftSurjectionGoodCrystallineLattices.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.DivisorProofs.HarrisTaylorIntegralModelNonempty",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/HarrisTaylorIntegralModelNonempty.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 106,
+        "deletable_internal_files": 105,
+        "dominated_lines": 52267,
+        "gateway_lines": 1288,
+        "incoming_callers_to_gateway": 2,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 510,
+        "headline_declarations": [
+          "theorem sdRep_of_coprime",
+          "theorem exists_repFam_qproj",
+          "theorem model_nonempty"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/HarrisTaylorIntegralModelNonempty.lean"
+      },
+      {
+        "gateway_module": "Development.AbelianVarietyTheory.Proofs.TwistedOperators.BesselPeriodNonvanishingAscentOfDepthDataStatement",
+        "path": "src/Development/AbelianVarietyTheory/Proofs/TwistedOperators/BesselPeriodNonvanishingAscentOfDepthDataStatement.lean",
+        "role": "H9_Galois_AbelianVarieties",
+        "dominated_files": 102,
+        "deletable_internal_files": 101,
+        "dominated_lines": 38676,
+        "gateway_lines": 1161,
+        "incoming_callers_to_gateway": 1,
+        "side_entrances_to_interior": 0,
+        "external_foundation_deps": 460,
+        "headline_declarations": [
+          "theorem rung0",
+          "theorem ascent_of_depFixed",
+          "theorem _root_.GlobalTheory.T.bessel_period_nonvanishing_ascent_of_depth_data"
+        ],
+        "github_url": "https://github.com/leanprover-community/riemann-hypothesis/blob/ce1560fba43e59629abdf3c27a279218fad9f77a/src/Development/AbelianVarietyTheory/Proofs/TwistedOperators/BesselPeriodNonvanishingAscentOfDepthDataStatement.lean"
+      }
+    ]
+  },
+  "conductor_aspect_quasi_grh": {
+    "closed_form_formula": "theta*(tau_k, alpha_q) = max((1 + alpha_q)/2, 2 + alpha_q - tau_k/3)",
+    "kink_threshold": "tau_k = (9 + 3*alpha_q)/2",
+    "nontrivial_condition": "alpha_q < 1 and tau_k > 3 + 3*alpha_q",
+    "grid_certificates": [
+      {
+        "tau_k": "3",
+        "alpha_q": "0",
+        "theta_star_exact": "1",
+        "theta_star_float": 1.0,
+        "lp_theta_float": 1.0,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "3",
+          "alpha_n": "3/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "18/5",
+        "alpha_q": "0",
+        "theta_star_exact": "4/5",
+        "theta_star_float": 0.8,
+        "lp_theta_float": 0.8,
+        "duality_gap": 1.11e-16,
+        "nontrivial_power_saving": true,
+        "regime": "NONTRIVIAL_WINDOW_FREE_QUASI_GRH (theta* < 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "18/5",
+          "alpha_n": "17/10"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "9/2",
+        "alpha_q": "0",
+        "theta_star_exact": "1/2",
+        "theta_star_float": 0.5,
+        "lp_theta_float": 0.5,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "FULL_GRH_AT_TRIVIAL_CONDUCTOR",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "6",
+        "alpha_q": "0",
+        "theta_star_exact": "1/2",
+        "theta_star_float": 0.5,
+        "lp_theta_float": 0.5,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "FULL_GRH_AT_TRIVIAL_CONDUCTOR",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "1/2",
+          "codim_span_q": "1/2",
+          "table_modulus_q": "0",
+          "twist_cap": "0"
+        }
+      },
+      {
+        "tau_k": "3",
+        "alpha_q": "1/4",
+        "theta_star_exact": "5/4",
+        "theta_star_float": 1.25,
+        "lp_theta_float": 1.25,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "3",
+          "alpha_n": "3/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "18/5",
+        "alpha_q": "1/4",
+        "theta_star_exact": "21/20",
+        "theta_star_float": 1.05,
+        "lp_theta_float": 1.05,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "18/5",
+          "alpha_n": "17/10"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "9/2",
+        "alpha_q": "1/4",
+        "theta_star_exact": "3/4",
+        "theta_star_float": 0.75,
+        "lp_theta_float": 0.75,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "NONTRIVIAL_WINDOW_FREE_QUASI_GRH (theta* < 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "6",
+        "alpha_q": "1/4",
+        "theta_star_exact": "5/8",
+        "theta_star_float": 0.625,
+        "lp_theta_float": 0.625,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "NONTRIVIAL_WINDOW_FREE_QUASI_GRH (theta* < 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "39/8",
+          "alpha_n": "17/8"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "1/2",
+          "codim_span_q": "1/2",
+          "table_modulus_q": "0",
+          "twist_cap": "0"
+        }
+      },
+      {
+        "tau_k": "3",
+        "alpha_q": "1/2",
+        "theta_star_exact": "3/2",
+        "theta_star_float": 1.5,
+        "lp_theta_float": 1.5,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "3",
+          "alpha_n": "3/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "18/5",
+        "alpha_q": "1/2",
+        "theta_star_exact": "13/10",
+        "theta_star_float": 1.3,
+        "lp_theta_float": 1.3,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "18/5",
+          "alpha_n": "17/10"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "9/2",
+        "alpha_q": "1/2",
+        "theta_star_exact": "1",
+        "theta_star_float": 1.0,
+        "lp_theta_float": 1.0,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "6",
+        "alpha_q": "1/2",
+        "theta_star_exact": "3/4",
+        "theta_star_float": 0.75,
+        "lp_theta_float": 0.75,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "NONTRIVIAL_WINDOW_FREE_QUASI_GRH (theta* < 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "21/4",
+          "alpha_n": "9/4"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "1/2",
+          "codim_span_q": "1/2",
+          "table_modulus_q": "0",
+          "twist_cap": "0"
+        }
+      },
+      {
+        "tau_k": "3",
+        "alpha_q": "3/4",
+        "theta_star_exact": "7/4",
+        "theta_star_float": 1.75,
+        "lp_theta_float": 1.75,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "3",
+          "alpha_n": "3/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "18/5",
+        "alpha_q": "3/4",
+        "theta_star_exact": "31/20",
+        "theta_star_float": 1.55,
+        "lp_theta_float": 1.55,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "18/5",
+          "alpha_n": "17/10"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "9/2",
+        "alpha_q": "3/4",
+        "theta_star_exact": "5/4",
+        "theta_star_float": 1.25,
+        "lp_theta_float": 1.25,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "INSUFFICIENT_TWIST_CAP (theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "6",
+        "alpha_q": "3/4",
+        "theta_star_exact": "7/8",
+        "theta_star_float": 0.875,
+        "lp_theta_float": 0.875,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": true,
+        "regime": "NONTRIVIAL_WINDOW_FREE_QUASI_GRH (theta* < 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "45/8",
+          "alpha_n": "19/8"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "1/2",
+          "codim_span_q": "1/2",
+          "table_modulus_q": "0",
+          "twist_cap": "0"
+        }
+      },
+      {
+        "tau_k": "3",
+        "alpha_q": "1",
+        "theta_star_exact": "2",
+        "theta_star_float": 2.0,
+        "lp_theta_float": 2.0,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "CONDUCTOR_CONVEXITY_BARRIER (alpha_q >= 1 => theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "3",
+          "alpha_n": "3/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "18/5",
+        "alpha_q": "1",
+        "theta_star_exact": "9/5",
+        "theta_star_float": 1.8,
+        "lp_theta_float": 1.8,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "CONDUCTOR_CONVEXITY_BARRIER (alpha_q >= 1 => theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "18/5",
+          "alpha_n": "17/10"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "9/2",
+        "alpha_q": "1",
+        "theta_star_exact": "3/2",
+        "theta_star_float": 1.5,
+        "lp_theta_float": 1.5,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "CONDUCTOR_CONVEXITY_BARRIER (alpha_q >= 1 => theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "9/2",
+          "alpha_n": "2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      },
+      {
+        "tau_k": "6",
+        "alpha_q": "1",
+        "theta_star_exact": "1",
+        "theta_star_float": 1.0,
+        "lp_theta_float": 1.0,
+        "duality_gap": 0.0,
+        "nontrivial_power_saving": false,
+        "regime": "CONDUCTOR_CONVEXITY_BARRIER (alpha_q >= 1 => theta* >= 1)",
+        "primal_witness_exact": {
+          "alpha_m": "1/2",
+          "alpha_k": "6",
+          "alpha_n": "5/2"
+        },
+        "farkas_duals_exact": {
+          "end_chain": "0",
+          "step_accum": "0",
+          "rank_spread": "0",
+          "table_collision": "0",
+          "codim_span_q": "1/3",
+          "table_modulus_q": "2/3",
+          "twist_cap": "1/3"
+        }
+      }
+    ]
+  }
+}

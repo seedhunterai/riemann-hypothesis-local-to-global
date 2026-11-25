@@ -9,7 +9,7 @@ on:
 
 jobs:
   verify:
-    name: Pytest 70-Test Verification Suite
+    name: Pytest 76-Test Verification Suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -46,6 +46,6 @@ jobs:
         run: |
           lake build
           ! grep -rn '\bsorry\b' LocalToGlobal/
-          AX_OUT=$(printf "import LocalToGlobal.Theorems\n#print axioms LocalToGlobal.quasi_rh_farkas_lower_bound\n#print axioms LocalToGlobal.quasi_rh_impossibility_below_three\n#print axioms LocalToGlobal.quasi_rh_primal_witness\n#print axioms LocalToGlobal.ingham_huxley_1972_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_witness_and_huxley_slack\n#print axioms LocalToGlobal.iwasawa_centered_pushforward_exact\n#print axioms LocalToGlobal.hecke_wronskian_ap_free_divisibility\n" | lake env lean --stdin)
+          AX_OUT=$(printf "import LocalToGlobal.Theorems\n#print axioms LocalToGlobal.quasi_rh_farkas_lower_bound\n#print axioms LocalToGlobal.quasi_rh_impossibility_below_three\n#print axioms LocalToGlobal.quasi_rh_primal_witness\n#print axioms LocalToGlobal.ingham_huxley_1972_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_witness_and_huxley_slack\n#print axioms LocalToGlobal.iwasawa_centered_pushforward_exact\n#print axioms LocalToGlobal.hecke_wronskian_ap_free_divisibility\n#print axioms LocalToGlobal.quasi_grh_conductor_farkas_lower_bound\n#print axioms LocalToGlobal.quasi_grh_convexity_and_twist_barriers\n#print axioms LocalToGlobal.quasi_grh_conductor_primal_witnesses\n" | lake env lean --stdin)
           echo "$AX_OUT"
           ! echo "$AX_OUT" | grep -q 'sorryAx'

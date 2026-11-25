@@ -159,4 +159,79 @@ theorem hecke_wronskian_ap_free_divisibility
     omega
   exact hlin
 
+
+/-! ## 5. Conductor-Aspect (`q = x^{α_q}`) Window-Free Quasi-GRH Dichotomy
+
+Extending `QuasiRHModel` from `ζ(s)` (`α_q = 0`) to primitive Dirichlet `L(s, χ)` of
+conductor `q = x^{α_q}` (`q6 = 6 * α_q ≥ 0`), we establish the exact two-branch closed form:
+  `θ*(τ_k, α_q) = max((1 + α_q)/2,  2 + α_q - τ_k / 3)`
+together with the tropical convexity barrier (`α_q ≥ 1 ⇒ θ* ≥ 1` for all `τ_k`) and
+exact primal witnesses in both regimes (`τ_k ≤ (9 + 3α_q)/2` and `τ_k ≥ (9 + 3α_q)/2`).
+-/
+
+/-- Conductor-augmented window-free exponent polyhedron (scaled by 6 over `Int`). -/
+structure QuasiGRHModel (θ6 m6 k6 n6 τ6 q6 : Int) : Prop where
+  nonneg_m : 0 ≤ m6
+  nonneg_k : 0 ≤ k6
+  nonneg_n : 0 ≤ n6
+  nonneg_q : 0 ≤ q6
+  end_chain : 6 - m6 ≤ θ6
+  step_accum : m6 ≤ θ6
+  rank_spread : 6 + m6 - k6 ≤ θ6
+  table_collision : k6 - 2 * n6 ≤ θ6
+  codim_span_q : 6 + q6 + 2 * n6 - k6 ≤ θ6
+  table_modulus_q : 15 + q6 - n6 ≤ θ6
+  unconditional_cap : k6 ≤ τ6
+
+/-- Exact Q-Farkas lower bound for Conductor-Aspect Quasi-GRH:
+    `θ ≥ (1 + α_q)/2` (`6 + q6 ≤ 2 * θ6`) and `θ ≥ 2 + α_q - τ_k/3` (`36 + 3*q6 - τ6 ≤ 3 * θ6`). -/
+theorem quasi_grh_conductor_farkas_lower_bound {θ6 m6 k6 n6 τ6 q6 : Int}
+    (h : QuasiGRHModel θ6 m6 k6 n6 τ6 q6) :
+    6 + q6 ≤ 2 * θ6 ∧ 36 + 3 * q6 - τ6 ≤ 3 * θ6 := by
+  have hcoll := h.table_collision
+  have hcodim := h.codim_span_q
+  have hmod := h.table_modulus_q
+  have hcap := h.unconditional_cap
+  constructor <;> omega
+
+/-- Conductor Convexity & Twist Barriers: either `α_q ≥ 1` (`6 ≤ q6`) or
+    `τ_k ≤ 3 + 3α_q` (`τ6 ≤ 18 + 3*q6`) forces `θ ≥ 1` (`6 ≤ θ6`). -/
+theorem quasi_grh_convexity_and_twist_barriers {θ6 m6 k6 n6 τ6 q6 : Int}
+    (h : QuasiGRHModel θ6 m6 k6 n6 τ6 q6)
+    (hbar : 6 ≤ q6 ∨ τ6 ≤ 18 + 3 * q6) :
+    6 ≤ θ6 := by
+  have ⟨hconv, htwist⟩ := quasi_grh_conductor_farkas_lower_bound h
+  rcases hbar with hq | htk <;> omega
+
+/-- Exact Primal Attainment in Both Branches (`τ_k ≤ (9 + 3α_q)/2` and `τ_k ≥ (9 + 3α_q)/2`). -/
+theorem quasi_grh_conductor_primal_witnesses (u t τ6_hi : Int)
+    (hu : 0 ≤ u) (ht_lo : 3 ≤ t) (ht_hi : t ≤ 9 + u) (hτ_hi : 27 + 3 * u ≤ τ6_hi) :
+    QuasiGRHModel (12 + 2 * u - t) 3 (3 * t) (3 + t) (3 * t) (2 * u) ∧
+    QuasiGRHModel (3 + u) 3 (27 + 3 * u) (12 + u) τ6_hi (2 * u) := by
+  refine ⟨{
+    nonneg_m := by omega
+    nonneg_k := by omega
+    nonneg_n := by omega
+    nonneg_q := by omega
+    end_chain := by omega
+    step_accum := by omega
+    rank_spread := by omega
+    table_collision := by omega
+    codim_span_q := by omega
+    table_modulus_q := by omega
+    unconditional_cap := by omega
+  }, {
+    nonneg_m := by omega
+    nonneg_k := by omega
+    nonneg_n := by omega
+    nonneg_q := by omega
+    end_chain := by omega
+    step_accum := by omega
+    rank_spread := by omega
+    table_collision := by omega
+    codim_span_q := by omega
+    table_modulus_q := by omega
+    unconditional_cap := by omega
+  }⟩
+
 end LocalToGlobal
