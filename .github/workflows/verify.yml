@@ -9,7 +9,7 @@ on:
 
 jobs:
   verify:
-    name: Pytest 60-Test Verification Suite
+    name: Pytest 70-Test Verification Suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -41,8 +41,11 @@ jobs:
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
-      - name: Build Lean 4 proofs (zero sorry)
+      - name: Build Lean 4 proofs & audit kernel axioms
         working-directory: lean
         run: |
           lake build
           ! grep -rn '\bsorry\b' LocalToGlobal/
+          AX_OUT=$(printf "import LocalToGlobal.Theorems\n#print axioms LocalToGlobal.quasi_rh_farkas_lower_bound\n#print axioms LocalToGlobal.quasi_rh_impossibility_below_three\n#print axioms LocalToGlobal.quasi_rh_primal_witness\n#print axioms LocalToGlobal.ingham_huxley_1972_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_saddle\n#print axioms LocalToGlobal.guth_maynard_2024_witness_and_huxley_slack\n#print axioms LocalToGlobal.iwasawa_centered_pushforward_exact\n#print axioms LocalToGlobal.hecke_wronskian_ap_free_divisibility\n" | lake env lean --stdin)
+          echo "$AX_OUT"
+          ! echo "$AX_OUT" | grep -q 'sorryAx'

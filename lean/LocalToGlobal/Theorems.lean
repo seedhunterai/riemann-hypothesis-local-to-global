@@ -1,7 +1,7 @@
 /-!
 # Formal Lean 4 Proofs of Part II Structural Theorems
 
-Zero-`sorry`, zero-Mathlib-dependency Lean 4 formalizations of the clean algebraic
+Complete, axiom-clean, zero-Mathlib-dependency Lean 4 formalizations of the algebraic
 and rational polyhedral theorems from Part II of `LOCAL_TO_GLOBAL.md`:
 
   1. **Proposition 12.1** — Exact Q-Farkas Window-Free Quasi-RH Dichotomy
