@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you reference this monograph or verification suite, please cite it using the metadata below."
+title: "The Local-to-Global Step: Monograph & Computational Verification Suite"
+authors:
+  - name: "seedhunterai"
+date-released: 2026-11-24
+license: MIT
+repository-code: "https://github.com/seedhunterai/rh-local-to-global"
