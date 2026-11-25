@@ -55,12 +55,12 @@
       border-bottom: 1px solid var(--border);
     }
     .tab-bar {
-      display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.3rem; padding: 0.55rem 0;
+      display: flex; flex-wrap: wrap; gap: 0.32rem; padding: 0.55rem 0;
     }
     .tab-btn {
       background: transparent; color: var(--muted); border: 1px solid transparent;
-      padding: 0.42rem 0.72rem; border-radius: 8px; cursor: pointer; white-space: nowrap;
-      font-size: 0.84rem; font-weight: 500; transition: all 0.15s ease;
+      padding: 0.38rem 0.6rem; border-radius: 8px; cursor: pointer; white-space: nowrap;
+      font-size: 0.8rem; font-weight: 500; transition: all 0.15s ease;
     }
     .tab-btn:hover { color: var(--text); background: var(--surface); }
     .tab-btn.active { color: var(--text); background: var(--surface-2); border-color: var(--accent); }
@@ -69,8 +69,15 @@
     .panel { display: none; }
     .panel.active { display: block; }
 
-    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+    @media (max-width: 960px) {
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .grid-4 { grid-template-columns: 1fr; }
+    }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
       padding: 1.2rem 1.3rem; min-width: 0; overflow: hidden;
@@ -87,11 +94,11 @@
     .bar-track { height: 11px; background: #0d131d; border-radius: 6px; overflow: hidden; border: 1px solid #1f2b3d; }
     .bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s ease; }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; table-layout: auto; }
-    th, td { padding: 0.48rem 0.55rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
-    th { color: var(--muted); font-weight: 600; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.81rem; table-layout: auto; }
+    th, td { padding: 0.42rem 0.46rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
     td.num, th.num { text-align: right; font-family: var(--mono); white-space: nowrap; }
-    code { font-family: var(--mono); font-size: 0.82em; background: #0e141f; padding: 0.12rem 0.32rem; border-radius: 4px; color: #9ecbff; overflow-wrap: anywhere; word-break: break-word; }
+    code { font-family: var(--mono); font-size: 0.8em; background: #0e141f; padding: 0.1rem 0.28rem; border-radius: 4px; color: #9ecbff; overflow-wrap: anywhere; word-break: break-word; }
 
     .slider-box {
       background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
@@ -99,8 +106,8 @@
     }
     input[type="range"] { width: 100%; accent-color: var(--accent); cursor: pointer; }
     .badge {
-      display: inline-block; font-family: var(--mono); font-size: 0.74rem; font-weight: 600;
-      padding: 0.18rem 0.5rem; border-radius: 6px;
+      display: inline-block; font-family: var(--mono); font-size: 0.71rem; font-weight: 600;
+      padding: 0.15rem 0.44rem; border-radius: 6px; white-space: nowrap;
     }
     .badge.crit { background: rgba(248,81,73,0.16); color: #ff948e; border: 1px solid rgba(248,81,73,0.4); }
     .badge.slack { background: rgba(63,185,80,0.16); color: #8ce99a; border: 1px solid rgba(63,185,80,0.4); }
@@ -143,12 +150,12 @@
 <nav class="tabs">
   <div class="container tab-bar">
     <button class="tab-btn active" data-tab="upstream">1. Lean DAG</button>
-    <button class="tab-btn" data-tab="quasirh">2. Quasi-RH (&sect;12)</button>
-    <button class="tab-btn" data-tab="fitting">3. Fitting &amp; HNF</button>
-    <button class="tab-btn" data-tab="tower">4. Iwasawa &amp; GL₂</button>
+    <button class="tab-btn" data-tab="quasirh">2. Quasi-RH</button>
+    <button class="tab-btn" data-tab="fitting">3. Fitting/HNF</button>
+    <button class="tab-btn" data-tab="tower">4. Iwasawa/GL₂</button>
     <button class="tab-btn" data-tab="zd">5. Guth–Maynard</button>
-    <button class="tab-btn" data-tab="rosetta">6. Rosetta &amp; H9</button>
-    <button class="tab-btn" data-tab="prfinder">7. PR Finder &amp; GRH</button>
+    <button class="tab-btn" data-tab="rosetta">6. Rosetta/H9</button>
+    <button class="tab-btn" data-tab="prfinder">7. PRs &amp; GRH</button>
   </div>
 </nav>
 
@@ -241,10 +248,12 @@
           Drag &tau;<sub>k</sub> into Regime II (<code>3.0 &lt; &tau;_k &lt; 4.5</code>) to watch <code>H1, H2, H4, H5, H6</code>
           gain simultaneous polynomial slack while windows vanish.
         </p>
-        <table>
-          <thead><tr><th>Hypothesis</th><th>Status</th><th class="num">Allowable Loss</th></tr></thead>
-          <tbody id="triage-table"></tbody>
-        </table>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Hypothesis</th><th>Status</th><th class="num">Slack</th></tr></thead>
+            <tbody id="triage-table"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -267,19 +276,21 @@
           Every individual word map &beta;<sub>w</sub>: &Zopf;<sup>D&minus;1</sup> &rarr; &Zopf;<sup>D</sup> misses a dimension (infinite index),
           yet summing W = 4 unit-weight words recovers <code>Fitt_0</code> identically with <strong>0.0 Bezout norm blowup</strong>.
         </p>
-        <table>
-          <thead>
-            <tr><th>Target D (r)</th><th class="num">a₀</th><th class="num">Single Map</th><th class="num">HNF Covol</th><th class="num">Padé Cut</th><th class="num">Super Cof</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>D=2 (r=1)</td><td class="num">21</td><td class="num">35d</td><td class="num">26d</td><td class="num" style="color:var(--green)">23.8%</td><td class="num">1</td></tr>
-            <tr><td>D=2 (r=1)</td><td class="num">49</td><td class="num">108d</td><td class="num">73d</td><td class="num" style="color:var(--green)">32.5%</td><td class="num">1</td></tr>
-            <tr><td>D=3 (r=2)</td><td class="num">21</td><td class="num">57d</td><td class="num">43d</td><td class="num" style="color:var(--green)">25.3%</td><td class="num">1</td></tr>
-            <tr><td>D=3 (r=2)</td><td class="num">49</td><td class="num">171d</td><td class="num">113d</td><td class="num" style="color:var(--green)">33.7%</td><td class="num">1</td></tr>
-            <tr><td>D=4 (r=3)</td><td class="num">21</td><td class="num">82d</td><td class="num">60d</td><td class="num" style="color:var(--green)">27.9%</td><td class="num">1</td></tr>
-            <tr><td>D=4 (r=3)</td><td class="num">49</td><td class="num">237d</td><td class="num">154d</td><td class="num" style="color:var(--green)">35.0%</td><td class="num">1</td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Target D (r)</th><th class="num">a₀</th><th class="num">Single</th><th class="num">HNF</th><th class="num">Cut</th><th class="num">Cof</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>D=2 (r=1)</td><td class="num">21</td><td class="num">35d</td><td class="num">26d</td><td class="num" style="color:var(--green)">23.8%</td><td class="num">1</td></tr>
+              <tr><td>D=2 (r=1)</td><td class="num">49</td><td class="num">108d</td><td class="num">73d</td><td class="num" style="color:var(--green)">32.5%</td><td class="num">1</td></tr>
+              <tr><td>D=3 (r=2)</td><td class="num">21</td><td class="num">57d</td><td class="num">43d</td><td class="num" style="color:var(--green)">25.3%</td><td class="num">1</td></tr>
+              <tr><td>D=3 (r=2)</td><td class="num">49</td><td class="num">171d</td><td class="num">113d</td><td class="num" style="color:var(--green)">33.7%</td><td class="num">1</td></tr>
+              <tr><td>D=4 (r=3)</td><td class="num">21</td><td class="num">82d</td><td class="num">60d</td><td class="num" style="color:var(--green)">27.9%</td><td class="num">1</td></tr>
+              <tr><td>D=4 (r=3)</td><td class="num">49</td><td class="num">237d</td><td class="num">154d</td><td class="num" style="color:var(--green)">35.0%</td><td class="num">1</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -293,16 +304,18 @@
           Centered excess <code>&mu;_N(c)</code> satisfies <code>&mu;_{2N}(c_+) + &mu;_{2N}(c_-) = &mu;_N(c)</code> identically across all fibers
           (max defect <code>4.27e-11</code>, total mass <code>-41.45</code> invariant), whereas vertically the ramp matrix has infinite &Qopf;-rank <code>R</code> vs. Frobenius rank <code>2</code>.
         </p>
-        <table>
-          <thead><tr><th>Transition</th><th class="num">Fiber Defect</th><th class="num">New Char Energy</th><th class="num">Parseval Err</th></tr></thead>
-          <tbody>
-            <tr><td>H₁₆ &rarr; H₈</td><td class="num">4.28e-11</td><td class="num">7,665.46</td><td class="num">2.65e-08</td></tr>
-            <tr><td>H₃₂ &rarr; H₁₆</td><td class="num">1.96e-11</td><td class="num">401,890.56</td><td class="num">9.14e-09</td></tr>
-            <tr><td>H₆₄ &rarr; H₃₂</td><td class="num">4.32e-12</td><td class="num">705,092.09</td><td class="num">3.49e-10</td></tr>
-            <tr><td>H₁₂₈ &rarr; H₆₄</td><td class="num">3.64e-12</td><td class="num">369,378.82</td><td class="num">2.33e-10</td></tr>
-            <tr><td>H₂₅₆ &rarr; H₁₂₈</td><td class="num">2.73e-12</td><td class="num">515,466.36</td><td class="num">3.49e-10</td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Step</th><th class="num">Fiber Defect</th><th class="num">New Energy</th><th class="num">Parseval</th></tr></thead>
+            <tbody>
+              <tr><td>H₁₆ &rarr; H₈</td><td class="num">4.28e-11</td><td class="num">7,665.46</td><td class="num">2.65e-08</td></tr>
+              <tr><td>H₃₂ &rarr; H₁₆</td><td class="num">1.96e-11</td><td class="num">401,890.56</td><td class="num">9.14e-09</td></tr>
+              <tr><td>H₆₄ &rarr; H₃₂</td><td class="num">4.32e-12</td><td class="num">705,092.09</td><td class="num">3.49e-10</td></tr>
+              <tr><td>H₁₂₈ &rarr; H₆₄</td><td class="num">3.64e-12</td><td class="num">369,378.82</td><td class="num">2.33e-10</td></tr>
+              <tr><td>H₂₅₆ &rarr; H₁₂₈</td><td class="num">2.73e-12</td><td class="num">515,466.36</td><td class="num">3.49e-10</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="card">
@@ -311,15 +324,17 @@
           Fixed-object analytic identities solve exact ranks 0–3 and tight Weil–Mestre GRH ceilings purely from local point counts <code>a_p</code>;
           Theorem 10.1 proves mod-<code>p²</code> ASD trace recovery without point counting and <code>a_p</code>-free Hecke–Wronskian divisibility.
         </p>
-        <table>
-          <thead><tr><th>Curve</th><th class="num">N</th><th class="num">Solved r</th><th class="num">L^(r)(E,1)</th><th class="num">Weil Bound</th><th>Ceiling</th></tr></thead>
-          <tbody>
-            <tr><td><code>11a1</code></td><td class="num">11</td><td class="num">0</td><td class="num">0.253842</td><td class="num">0.0055</td><td><span class="badge slack">&le; 0</span></td></tr>
-            <tr><td><code>37a1</code></td><td class="num">37</td><td class="num">1</td><td class="num">0.306000</td><td class="num">1.0068</td><td><span class="badge slack">&le; 1</span></td></tr>
-            <tr><td><code>389a1</code></td><td class="num">389</td><td class="num">2</td><td class="num">1.518633</td><td class="num">2.0329</td><td><span class="badge slack">&le; 2</span></td></tr>
-            <tr><td><code>5077a1</code></td><td class="num">5077</td><td class="num">3</td><td class="num">10.391100</td><td class="num">3.0579</td><td><span class="badge slack">&le; 3</span></td></tr>
-          </tbody>
-        </table>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Curve</th><th class="num">N</th><th class="num">r</th><th class="num">L^(r)(E,1)</th><th class="num">Weil</th><th>Cap</th></tr></thead>
+            <tbody>
+              <tr><td><code>11a1</code></td><td class="num">11</td><td class="num">0</td><td class="num">0.253842</td><td class="num">0.0055</td><td><span class="badge slack">&le; 0</span></td></tr>
+              <tr><td><code>37a1</code></td><td class="num">37</td><td class="num">1</td><td class="num">0.306000</td><td class="num">1.0068</td><td><span class="badge slack">&le; 1</span></td></tr>
+              <tr><td><code>389a1</code></td><td class="num">389</td><td class="num">2</td><td class="num">1.518633</td><td class="num">2.0329</td><td><span class="badge slack">&le; 2</span></td></tr>
+              <tr><td><code>5077a1</code></td><td class="num">5077</td><td class="num">3</td><td class="num">10.391100</td><td class="num">3.0579</td><td><span class="badge slack">&le; 3</span></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -512,7 +527,7 @@
           hitting the tropical convexity barrier <code>&theta;* &ge; 1</code> at <code>&alpha;_q = 1</code> (<code>q = x</code>).
         </p>
         <div class="slider-box" style="padding:0.8rem 1rem">
-          <div style="display:flex;justify-content:space-between;font-size:0.84rem">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.4rem 1rem;font-size:0.84rem">
             <span>Twist Cap <code>&tau;_k</code>: <strong id="qgrh-tau-lbl">4.50</strong></span>
             <span>Conductor Exp <code>&alpha;_q</code>: <strong id="qgrh-aq-lbl">0.25</strong></span>
             <span>Optimal <code>&theta;*</code>: <strong id="qgrh-theta-lbl" style="font-family:var(--mono)">0.7500</strong></span>
@@ -594,28 +609,28 @@
     const thetaEl = document.getElementById('theta-val');
     thetaEl.style.color = theta <= 0.5001 ? 'var(--green)' : (theta < 0.9999 ? 'var(--cyan)' : 'var(--red)');
 
-    // SVG plot: x in [2.0, 4.9] -> [55, 495], y in [0.3, 1.4] -> [230, 25]
-    const xMap = t => 55 + ((t - 2.0) / 2.9) * 440;
-    const yMap = y => 230 - ((y - 0.3) / 1.1) * 205;
+    // SVG plot: x in [2.0, 5.05] -> [50, 500], y in [0.3, 1.45] -> [230, 32]
+    const xMap = t => 50 + ((t - 2.0) / 3.05) * 450;
+    const yMap = y => 230 - ((y - 0.3) / 1.15) * 198;
     const px = xMap(tau), py = yMap(theta);
 
     const svg = document.getElementById('qrh-svg');
     svg.innerHTML = `
-      <rect x="${xMap(2.0)}" y="25" width="${xMap(3.0)-xMap(2.0)}" height="205" fill="rgba(248,81,73,0.08)" />
-      <rect x="${xMap(3.0)}" y="25" width="${xMap(4.5)-xMap(3.0)}" height="205" fill="rgba(57,197,207,0.09)" />
-      <rect x="${xMap(4.5)}" y="25" width="${xMap(4.9)-xMap(4.5)}" height="205" fill="rgba(63,185,80,0.10)" />
-      <line x1="55" y1="${yMap(1.0)}" x2="495" y2="${yMap(1.0)}" stroke="#f85149" stroke-dasharray="4,4" stroke-width="1" />
-      <line x1="55" y1="${yMap(0.5)}" x2="495" y2="${yMap(0.5)}" stroke="#3fb950" stroke-dasharray="4,4" stroke-width="1" />
+      <rect x="${xMap(2.0)}" y="32" width="${xMap(3.0)-xMap(2.0)}" height="198" fill="rgba(248,81,73,0.08)" />
+      <rect x="${xMap(3.0)}" y="32" width="${xMap(4.5)-xMap(3.0)}" height="198" fill="rgba(57,197,207,0.09)" />
+      <rect x="${xMap(4.5)}" y="32" width="${xMap(5.05)-xMap(4.5)}" height="198" fill="rgba(63,185,80,0.10)" />
+      <line x1="50" y1="${yMap(1.0)}" x2="500" y2="${yMap(1.0)}" stroke="#f85149" stroke-dasharray="4,4" stroke-width="1" />
+      <line x1="50" y1="${yMap(0.5)}" x2="500" y2="${yMap(0.5)}" stroke="#3fb950" stroke-dasharray="4,4" stroke-width="1" />
       <polyline fill="none" stroke="#58a6ff" stroke-width="3"
-        points="${xMap(2.0)},${yMap(2-2/3)} ${xMap(4.5)},${yMap(0.5)} ${xMap(4.9)},${yMap(0.5)}" />
-      <line x1="${px}" y1="25" x2="${px}" y2="230" stroke="#e6edf7" stroke-dasharray="3,3" stroke-width="1.2" />
+        points="${xMap(2.0)},${yMap(2-2/3)} ${xMap(4.5)},${yMap(0.5)} ${xMap(5.05)},${yMap(0.5)}" />
+      <line x1="${px}" y1="32" x2="${px}" y2="230" stroke="#e6edf7" stroke-dasharray="3,3" stroke-width="1.2" />
       <circle cx="${px}" cy="${py}" r="6.5" fill="#58a6ff" stroke="#ffffff" stroke-width="2" />
-      <text x="60" y="${yMap(1.0)-5}" fill="#ff948e" font-size="11" font-family="monospace">&theta; = 1.0 (trivial barrier)</text>
-      <text x="60" y="${yMap(0.5)-5}" fill="#8ce99a" font-size="11" font-family="monospace">&theta; = 0.5 (full RH)</text>
-      <text x="${xMap(2.12)}" y="42" fill="#ff948e" font-size="11">Regime III</text>
-      <text x="${xMap(3.45)}" y="42" fill="#39c5cf" font-size="11">Regime II (Quasi-RH)</text>
-      <text x="${xMap(4.53)}" y="42" fill="#8ce99a" font-size="11">I</text>
-      <text x="240" y="258" fill="#8fa3bf" font-size="12">Unconditional Twist Cap &tau;_k</text>
+      <text x="295" y="${yMap(1.0)-6}" fill="#ff948e" font-size="11" font-family="monospace">&theta; = 1.0 (trivial barrier)</text>
+      <text x="60" y="${yMap(0.5)-6}" fill="#8ce99a" font-size="11" font-family="monospace">&theta; = 0.5 (full RH)</text>
+      <text x="${xMap(2.12)}" y="48" fill="#ff948e" font-size="11">Regime III</text>
+      <text x="${xMap(3.38)}" y="48" fill="#39c5cf" font-size="11">Regime II (Quasi-RH)</text>
+      <text x="${xMap(4.54)}" y="48" fill="#8ce99a" font-size="11">Regime I</text>
+      <text x="200" y="258" fill="#8fa3bf" font-size="12">Unconditional Twist Cap &tau;_k</text>
     `;
 
     let regimeHtml = '';
@@ -634,20 +649,20 @@
     const autoSlack = Math.max(0, theta - 0.5);
     const isRegimeI = theta <= 0.5001;
     const rows = [
-      ['H0_parameter_sizes', isRegimeI ? 'SLACK_DEGRADABLE' : 'CRITICAL_ZERO_SLACK', 0.0],
-      ['H10_codimension_rank_bound', isRegimeI ? 'SLACK_DEGRADABLE' : 'CRITICAL_ZERO_SLACK', 0.0],
-      ['H1_archimedean_size', isRegimeI ? 'CRITICAL_ZERO_SLACK' : 'SLACK_DEGRADABLE', autoSlack],
-      ['H2_level_correction', isRegimeI ? 'CRITICAL_ZERO_SLACK' : 'SLACK_DEGRADABLE', autoSlack],
-      ['H4_form_count_mass', isRegimeI ? 'CRITICAL_ZERO_SLACK' : 'SLACK_DEGRADABLE', autoSlack],
-      ['H5_first_lattice_covolume', isRegimeI ? 'CRITICAL_ZERO_SLACK' : 'SLACK_DEGRADABLE', autoSlack],
-      ['H6_lubin_tate_divisibility', isRegimeI ? 'CRITICAL_ZERO_SLACK' : 'SLACK_DEGRADABLE', autoSlack],
-      ['H9_galois_cohomology_debt', 'REPLACED_BY_UNCONDITIONAL_CAP', null],
+      ['H0_parameter_sizes', isRegimeI ? 'SLACK_OK' : 'CRITICAL_0_SLACK', 0.0],
+      ['H10_codimension_rank', isRegimeI ? 'SLACK_OK' : 'CRITICAL_0_SLACK', 0.0],
+      ['H1_archimedean_size', isRegimeI ? 'CRITICAL_0_SLACK' : 'SLACK_OK', autoSlack],
+      ['H2_level_correction', isRegimeI ? 'CRITICAL_0_SLACK' : 'SLACK_OK', autoSlack],
+      ['H4_form_count_mass', isRegimeI ? 'CRITICAL_0_SLACK' : 'SLACK_OK', autoSlack],
+      ['H5_lattice_covolume', isRegimeI ? 'CRITICAL_0_SLACK' : 'SLACK_OK', autoSlack],
+      ['H6_lubin_tate_div', isRegimeI ? 'CRITICAL_0_SLACK' : 'SLACK_OK', autoSlack],
+      ['H9_cohomology_debt', 'UNCONDITIONAL_CAP', null],
     ];
     const tb = document.getElementById('triage-table');
     tb.innerHTML = '';
     rows.forEach(([name, st, sl]) => {
-      const cls = st === 'CRITICAL_ZERO_SLACK' ? 'crit' : (st === 'SLACK_DEGRADABLE' ? 'slack' : 'replaced');
-      const slText = sl === null ? 'windows=False' : `+${sl.toFixed(3)}`;
+      const cls = st === 'CRITICAL_0_SLACK' ? 'crit' : (st === 'SLACK_OK' ? 'slack' : 'replaced');
+      const slText = sl === null ? 'no windows' : `+${sl.toFixed(3)}`;
       tb.innerHTML += `<tr><td><code>${name}</code></td><td><span class="badge ${cls}">${st}</span></td><td class="num">${slText}</td></tr>`;
     });
   }
@@ -688,7 +703,7 @@
     document.getElementById('zd-1972-btn').classList.toggle('active', !includeGM);
 
     const xM = s => 55 + ((s - 0.5) / 0.5) * 430;
-    const yM = b => 235 - ((b - 0.15) / 0.55) * 200;
+    const yM = b => 238 - ((b - 0.15) / 0.55) * 190;
     const ingham = s => (2 - s) / 3;
     const huxley = s => s - 1 / 3;
     const gm = s => (5 * s + 3) / 15;
@@ -706,9 +721,9 @@
     lines += `
       <circle cx="${xM(sStar)}" cy="${yM(bStar)}" r="6.5" fill="#bc8cff" stroke="#fff" stroke-width="2" />
       <text x="${xM(sStar)+10}" y="${yM(bStar)-8}" fill="#e2ccff" font-size="11" font-family="monospace">&sigma;*=${includeGM?'7/10':'3/4'}, B*=${includeGM?'13/30':'5/12'}</text>
-      <text x="60" y="25" fill="#58a6ff" font-size="11">Ingham: (2&minus;&sigma;)/3</text>
-      <text x="190" y="25" fill="#d29922" font-size="11">Huxley: &sigma;&minus;1/3</text>
-      ${includeGM ? '<text x="315" y="25" fill="#3fb950" font-size="11">Guth–Maynard: (5&sigma;+3)/15</text>' : ''}
+      <text x="56" y="28" fill="#58a6ff" font-size="11">Ingham: (2&minus;&sigma;)/3</text>
+      <text x="188" y="28" fill="#d29922" font-size="11">Huxley: &sigma;&minus;1/3</text>
+      ${includeGM ? '<text x="310" y="28" fill="#3fb950" font-size="11">Guth–Maynard: (5&sigma;+3)/15</text>' : ''}
       <text x="255" y="260" fill="#8fa3bf" font-size="11">&sigma; &isin; [1/2, 1]</text>
     `;
     document.getElementById('zd-svg').innerHTML = lines;
@@ -751,22 +766,22 @@
   const GH_BASE = `https://github.com/leanprover-community/riemann-hypothesis/blob/${COMMIT_SHA}/`;
 
   const rosettaRows = [
-    ['Main Headline', '§0 / Main', 'src/Main.lean', 12, 'theorem riemannHypothesis : RiemannHypothesis :=', 'ROOT_GOAL', 'slack'],
-    ['Lemma 1.1 & 1.2', '§1.2–1.3 (Window Landau)', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1151, 'theorem zeroFree_of_rpow_window (F : CharFamily) {θ δ C : ℝ} (hθ : 0 ≤ θ) (hδ : 0 < δ)', 'ANALYTIC_ZERO_SIDE', 'warn'],
-    ['Lemma 2.1', '§2.3 (Slope & Denominators)', 'src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean', 461, 'theorem grid_function_of_lemma_A (hA : SlopeInequalityDenominators) : LargestSlopeFullLatticeFrames := by', 'LINEAR_ALGEBRA_CORE', 'warn'],
-    ['(H0)', '§3.1 & §5.2 (Parameter Sizes & Poset)', 'src/Formalism/LocalRingCardinality/DataParams.lean', 53, "structure ParameterChoice' (D : D7) (L : SizeData₂ D) : Type where", 'CRITICAL_IN_QUASI_RH (λ*=2/3)', 'crit'],
-    ['(H1)', '§3.2(b) (Archimedean Pairing Size)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 958, 'theorem UpperTheory.LiteratureTheorems.published_results_analytic : GlobalTheory.NRows.GeometricGaloisRepCompatibility :', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
-    ['(H2)', '§6.1 (Local Level Correction E_err)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 971, 'theorem UpperTheory.LiteratureTheorems.published_results_local : GlobalTheory.NLink.Hypotheses₂ :=', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
-    ['(H3)', '§6.1 (Word Height Comparison)', 'src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean', 1214, 'structure LocHW (l : ℕ) [Fact l.Prime] (P : LocPrime l) where', 'CRITICAL_IN_QUASI_RH', 'crit'],
-    ['(H4)', '§3.3 & §6.1 (Level Prime & Form Count Mass)', 'src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean', 365, 'def SdHerm (R : Type) [CommRing R] [Algebra F R] [TopologicalSpace R] (ψR : R → ℂ) (n : ℕ)', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
-    ['(H5)', '§3.2(c) & §6.1 (First Lattice Covolume)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1065, 'theorem UpperTheory.LiteratureTheorems.published_results_arithmetic : GlobalTheory.CovTop.PublishedHodgeBundleTheorems :', 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
-    ['(H6)', '§3.2(a) & §9.3 (Lubin–Tate & CM Ideals)', 'src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean', 21, "theorem absNorm_eq_relIndex_mul (J J' : FractionalIdeal (𝓞 K)⁰ K) (hJ' : J' ≠ 0) (hle : J' ≤ J) :", 'CRITICAL_AT_1/2 | SLACK_AT_4/5 (+0.30)', 'slack'],
-    ['(H7)', '§3.2(a) (Invariant-Factor Step Bridge)', 'src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean', 20, 'theorem levelLattice : Formalism.GM.M.LevelLattice := LevelLattice_of _root_.Formalism.InvariantFactorPaths.KP.LL.middle', 'LOCAL_TO_GLOBAL_BRIDGE', 'warn'],
-    ['(H8)', '§2.4 (Harder–Narasimhan Mean-Slope)', 'src/Formalism/HarderNarasimhan/DefsPl.lean', 18, 'def PlaceSplit : Prop :=', 'LINEAR_ALGEBRA_FILTRATION', 'warn'],
-    ['(H9)', '§3.2(c) & §5.3 (Cohomology Debt & Windows)', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean', 1230, 'theorem UpperTheory.One.vwin_of_row (h : UpperTheory.V.Z.Win.RowT) : UpperTheory.Top.VWin :=', 'WINDOW_GENERATOR (46.2% of repo!)', 'replaced'],
-    ['(H10) & (H11)', '§2.4 & §12 (Pairing Index & Codimension)', 'src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean', 28, 'theorem halvesRec_of_facts (hG : GenHalves) (hLa : LaEqMap) (hMM : MMeq) (hPhi : PhiInj) (hU : UnifElt)', 'CRITICAL_IN_QUASI_RH (λ*=1/3)', 'crit'],
-    ['Estimates B & C', '§4 (Auxiliary Primes q, d & Zero-Free)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1083, 'theorem UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin (hLiteratureRow : _root_.UpperTheory.One.M.', 'AUX_PRIME_SUPPLY', 'warn'],
-    ['(H12)', '§5.1 (Uniform Window Supply HostExW)', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1259, 'theorem zeroFreeAll_of_topG {la : ℝ} (hla : 1 < la) (h : TopG) (hS : ∀ ψ : PChar, HostExW la (GChi ψ).req) : ZeroFreeAll', 'SCALE_UNIFORMITY_QUANTIFIER', 'replaced'],
+    ['Main Headline', '§0', 'src/Main.lean', 12, 'theorem riemannHypothesis : RiemannHypothesis', 'ROOT_GOAL', 'slack'],
+    ['Lemma 1.1 & 1.2', '§1.2–1.3', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1151, 'theorem zeroFree_of_rpow_window (F : CharFamily)', 'ZERO_SIDE', 'warn'],
+    ['Lemma 2.1', '§2.3', 'src/Formalism/LocalToGlobal/ExponentGrids/ExponentGridsProofs/FrameHeightOfDualSlope.lean', 461, 'theorem grid_function_of_lemma_A : LargestSlopeFullLatticeFrames', 'SLOPE_CORE', 'warn'],
+    ['(H0)', '§3.1, §5.2', 'src/Formalism/LocalRingCardinality/DataParams.lean', 53, "structure ParameterChoice' (D : D7) (L : SizeData₂ D)", 'QUASI_CRIT (λ*=2/3)', 'crit'],
+    ['(H1)', '§3.2(b)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 958, 'published_results_analytic : GeometricGaloisRepCompatibility', 'SLACK_4/5 (+0.30)', 'slack'],
+    ['(H2)', '§6.1', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 971, 'published_results_local : GlobalTheory.NLink.Hypotheses₂', 'SLACK_4/5 (+0.30)', 'slack'],
+    ['(H3)', '§6.1', 'src/Formalism/SharpRestriction/LevelLetterCocycles/DataNLoc.lean', 1214, 'structure LocHW (l : ℕ) [Fact l.Prime] (P : LocPrime l)', 'QUASI_CRIT', 'crit'],
+    ['(H4)', '§3.3, §6.1', 'src/Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean', 365, 'def SdHerm (R : Type) ... (ψR : R → ℂ) (n : ℕ)', 'SLACK_4/5 (+0.30)', 'slack'],
+    ['(H5)', '§3.2(c)', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1065, 'published_results_arithmetic : PublishedHodgeBundleTheorems', 'SLACK_4/5 (+0.30)', 'slack'],
+    ['(H6)', '§3.2(a), §9', 'src/Formalism/LocalToGlobal/CMDeterminantIdeals/CMIdealValuations/AbsNormEqRelIndexMul.lean', 21, "theorem absNorm_eq_relIndex_mul (J J' : FractionalIdeal ...)", 'SLACK_4/5 (+0.30)', 'slack'],
+    ['(H7)', '§3.2(a)', 'src/Formalism/ThetaLogCoordinates/BihomogeneousPairs/FinalLL.lean', 20, 'theorem levelLattice : Formalism.GM.M.LevelLattice', 'LOCAL_GLOBAL', 'warn'],
+    ['(H8)', '§2.4', 'src/Formalism/HarderNarasimhan/DefsPl.lean', 18, 'def PlaceSplit : Prop', 'HN_FILTRATION', 'warn'],
+    ['(H9)', '§3.2(c), §5.3', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean', 1230, 'theorem UpperTheory.One.vwin_of_row : UpperTheory.Top.VWin', 'WINDOW_GEN (46.2%)', 'replaced'],
+    ['(H10) & (H11)', '§2.4, §12', 'src/Formalism/LocalToGlobal/PairingIndexBounds/HalvesRecursion/BoundedHalfModels/Assemble.lean', 28, 'theorem halvesRec_of_facts (hG : GenHalves) ...', 'QUASI_CRIT (λ*=1/3)', 'crit'],
+    ['Estimates B & C', '§4', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean', 1083, 'every_character_of_literature_of_vWin', 'AUX_PRIMES', 'warn'],
+    ['(H12)', '§5.1', 'src/Development/AutomorphicArithmetic/CharacterBoxes/ZeroFreeAllOfTopG.lean', 1259, 'theorem zeroFreeAll_of_topG ... : ZeroFreeAll', 'SCALE_UNIFORMITY', 'replaced'],
   ];
 
   const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -777,19 +792,20 @@
     const tbody = document.getElementById('rosetta-tbody');
     tbody.innerHTML = '';
     rosettaRows.forEach(([hyp, sec, path, line, decl, role, cls]) => {
-      if (activeRFilter === 'QUASI' && !role.includes('CRITICAL_IN_QUASI_RH')) return;
-      if (activeRFilter === 'SLACK' && !role.includes('SLACK_AT_4/5')) return;
+      if (activeRFilter === 'QUASI' && !role.includes('QUASI_CRIT')) return;
+      if (activeRFilter === 'SLACK' && !role.includes('SLACK_4/5')) return;
       if (activeRFilter === 'WINDOW' && !(role.includes('WINDOW') || role.includes('SCALE_UNIFORMITY'))) return;
       const hay = `${hyp} ${sec} ${path} ${decl} ${role}`.toLowerCase();
       if (q && !hay.includes(q)) return;
 
       const baseName = path.split('/').pop();
+      const shortFile = baseName.length > 24 ? baseName.slice(0, 14) + '…' + baseName.slice(-9) : baseName;
       const url = `${GH_BASE}${path}#L${line}`;
       tbody.innerHTML += `
         <tr>
           <td style="white-space:nowrap"><strong>${esc(hyp)}</strong></td>
-          <td>${esc(sec)}</td>
-          <td><a href="${url}" target="_blank" rel="noopener" title="${esc(path)}"><code>${esc(baseName)}:L${line}</code> &nearr;</a></td>
+          <td style="white-space:nowrap">${esc(sec)}</td>
+          <td style="white-space:nowrap"><a href="${url}" target="_blank" rel="noopener" title="${esc(path)}"><code>${esc(shortFile)}:L${line}</code> &nearr;</a></td>
           <td><code>${esc(decl)}</code></td>
           <td><span class="badge ${cls}">${esc(role)}</span></td>
         </tr>`;
@@ -808,16 +824,16 @@
   renderRosetta();
 
   const avtGateways = [
-    ['Definitions.Divisors.MatchingOfParts', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/MatchingOfParts.lean', 247, 51, 'KReal, KFin, matching_of_parts'],
-    ['BlockTheory.DivisorBase.WeilTensorModels', 'src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean', 225, 597, 'StepAlpha, LocalMatching, ThetaIntegralsAgree'],
-    ['Definitions.NonGaloisDescent.MkMemAdmissibleAtIffCocycle', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/MkMemAdmissibleAtIffCocycle.lean', 192, 641, 'TensIso, finiteSelmer, Standing'],
-    ['Proofs.FoundationProofs.ExistsContinuousPadic', 'src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/ExistsContinuousPadic.lean', 178, 348, 'resChar_mem, exists_locAt'],
-    ['Definitions.NonGaloisDescent.NonemptyEquivOfRangeEq', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivOfRangeEq.lean', 168, 485, 'clTwist_cl, clTwist_ofChar'],
-    ['Definitions.Divisors.T2SpaceGeneralLinearGroup', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/T2SpaceGeneralLinearGroup.lean', 166, 222, 'isHaarMeasure_haarVol, haarVol_self'],
-    ['Proofs.UnitaryExistence.LcscAdelicUnitaryGroup', 'src/Development/AbelianVarietyTheory/Proofs/UnitaryExistence/LcscAdelicUnitaryGroup.lean', 125, 495, 'lcsc_HA, lcsc_adelicUnitary'],
-    ['Definitions.LatticeFrames.MiStarOfMid', 'src/Development/AbelianVarietyTheory/Definitions/LatticeFrames/MiStarOfMid.lean', 119, 35, 'OpsUnit'],
-    ['Definitions.Divisors.HilbertNinetyQuotientHomEqIff', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean', 118, 395, 'IsUWeilPair, isUSplitting'],
-    ['Definitions.NonGaloisDescent.NonemptyEquivMultiProdOne', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivMultiProdOne.lean', 116, 809, 'embeds_detRep_segment, isSpeh_one'],
+    ['Divisors.MatchingOfParts', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/MatchingOfParts.lean', 247, 51, 'KReal, matching_of_parts'],
+    ['DivisorBase.WeilTensorModels', 'src/Development/AbelianVarietyTheory/BlockTheory/DivisorBase/WeilTensorModels.lean', 225, 597, 'LocalMatching, ThetaIntegralsAgree'],
+    ['NonGalois...IffCocycle', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/MkMemAdmissibleAtIffCocycle.lean', 192, 641, 'TensIso, finiteSelmer'],
+    ['Foundation...ExistsContinuousPadic', 'src/Development/AbelianVarietyTheory/Proofs/FoundationProofs/ExistsContinuousPadic.lean', 178, 348, 'resChar_mem, exists_locAt'],
+    ['NonGalois...EquivOfRangeEq', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivOfRangeEq.lean', 168, 485, 'clTwist_cl, clTwist_ofChar'],
+    ['Divisors.T2SpaceGeneralLinearGroup', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/T2SpaceGeneralLinearGroup.lean', 166, 222, 'isHaarMeasure_haarVol'],
+    ['Unitary...LcscAdelicUnitaryGroup', 'src/Development/AbelianVarietyTheory/Proofs/UnitaryExistence/LcscAdelicUnitaryGroup.lean', 125, 495, 'lcsc_HA, lcsc_adelicUnitary'],
+    ['LatticeFrames.MiStarOfMid', 'src/Development/AbelianVarietyTheory/Definitions/LatticeFrames/MiStarOfMid.lean', 119, 35, 'OpsUnit'],
+    ['Divisors.HilbertNinetyQuotientHom', 'src/Development/AbelianVarietyTheory/Definitions/Divisors/HilbertNinetyQuotientHomEqIff.lean', 118, 395, 'IsUWeilPair, isUSplitting'],
+    ['NonGalois...MultiProdOne', 'src/Development/AbelianVarietyTheory/Definitions/NonGaloisDescent/NonemptyEquivMultiProdOne.lean', 116, 809, 'embeds_detRep_segment'],
   ];
   const gwTbody = document.getElementById('avt-gateway-tbody');
   avtGateways.forEach(([shortMod, path, callers, ln, syms]) => {
@@ -857,19 +873,19 @@
 
   // --- Panel 7: Dominator PR Target Finder & Conductor-Aspect Quasi-GRH ---
   const prIslands = [
-    ['Proofs.DivisorProofs.ToroidalCompactificationFanLogKodairaSpencerIso', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ToroidalCompactificationFanLogKodairaSpencerIso.lean', 1268, 353353, 1870, 'H9 (AVT)', 'logKodairaSpencerIso (1,267 deletable H9 files!)'],
-    ['ThirdPlaceSeries.MainTheoremPublishedInputsThird', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremPublishedInputsThird.lean', 587, 167221, 1579, 'H12', 'miStar_row_alt_alt, miStarRowClosing_alt_alt'],
-    ['KatoQuadraticCharacters.SphericalDecomposition.SphAtTw', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/KatoQuadraticCharacters/SphericalDecomposition/SphAtTw.lean', 580, 175509, 229, 'H12', 'vanishOrdL_of_zetaUr, WeilSphericalRecords.twoS'],
-    ['ThirdPlaceSeries.LinkNFam', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkNFam.lean', 564, 196788, 839, 'H12', 'linkedAt_linkN_of_boundAtTwoThree, final_of_alt'],
-    ['TemperedRepresentationTheory.PoincareLelong.PoincareLelongInv', 'src/Development/WeilBound/CoreStatements/TemperedRepresentationTheory/PoincareLelong/PoincareLelongInv.lean', 545, 49294, 267, 'Est. B/C', 'theorem poincareLelong, ptsAbsIntegrable'],
-    ['Proofs.DivisorProofs.RigidBoundaryChartsForFanUnitaryDatumStatement', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean', 517, 116994, 1024, 'H9 (AVT)', 'uPoinStX_sep, rigidForFan_holds'],
-    ['DivisibilityProofs.VolumeTheoremOfInputs', 'src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/VolumeTheoremOfInputs.lean', 472, 124253, 1139, 'Est. B/C', 'slopeLower_mono_top, volumeTheoremX_of_inputs'],
+    ['AVT...LogKodairaSpencerIso', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ToroidalCompactificationFanLogKodairaSpencerIso.lean', 1268, 353353, 1870, 'H9 (AVT)', 'logKodairaSpencerIso (1,267 files)'],
+    ['ThirdPlace...PublishedInputsThird', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/MainTheoremPublishedInputsThird.lean', 587, 167221, 1579, 'H12', 'miStar_row_alt_alt'],
+    ['Kato...SphericalDecomp.SphAtTw', 'src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/KatoQuadraticCharacters/SphericalDecomposition/SphAtTw.lean', 580, 175509, 229, 'H12', 'vanishOrdL_of_zetaUr'],
+    ['ThirdPlaceSeries.LinkNFam', 'src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/LinkNFam.lean', 564, 196788, 839, 'H12', 'linkedAt_linkN_of_boundAtTwoThree'],
+    ['PoincareLelong.PoincareLelongInv', 'src/Development/WeilBound/CoreStatements/TemperedRepresentationTheory/PoincareLelong/PoincareLelongInv.lean', 545, 49294, 267, 'Est. B/C', 'poincareLelong, ptsAbsIntegrable'],
+    ['AVT...RigidBoundaryChartsForFan', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/RigidBoundaryChartsForFanUnitaryDatumStatement.lean', 517, 116994, 1024, 'H9 (AVT)', 'uPoinStX_sep, rigidForFan_holds'],
+    ['Divisibility...VolumeTheoremOfInputs', 'src/Development/AutomorphicSpectrum/Proofs/DivisibilityProofs/VolumeTheoremOfInputs.lean', 472, 124253, 1139, 'Est. B/C', 'volumeTheoremX_of_inputs'],
     ['KunnethLefschetz.EtSideGood', 'src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/KunnethLefschetz/EtSideGood.lean', 447, 77145, 186, 'H12', 'diagEt3, etSide_sm, etFin'],
-    ['Proofs.DivisorProofs.ExistsTripleChartUnitaryBoundaryPointRigidStatement', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean', 422, 140230, 1036, 'H9 (AVT)', 'exists_tripleChart_unitary_boundary_pointRigid'],
-    ['IntegralStructures.Development', 'src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean', 367, 98399, 780, 'H12', 'galoisLocalGlobalStrong_of_geometry_lift'],
-    ['MoriwakiBigness.MoriwakiBigTheorem.Outright', 'src/Development/WeilBound/CoreStatements/AutomorphicKernels/MoriwakiBigness/MoriwakiBigTheorem/Outright.lean', 272, 35378, 419, 'Est. B/C', 'moriwakiBig_outright, hsUse_outright'],
-    ['Proofs.SatakeParameters.BundleBothPartsOfStandardKernelAndSixHypotheses', 'src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BundleBothPartsOfStandardKernelAndSixHypotheses.lean', 242, 63885, 619, 'H9 (AVT)', 'bundleBothPartsOfStandardKernel'],
-    ['Proofs.DivisorProofs.LeafDepthAllRecord', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LeafDepthAllRecord.lean', 230, 74251, 214, 'H9 (AVT)', 'leafDepthAllRecord'],
+    ['AVT...ExistsTripleChartRigid', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/ExistsTripleChartUnitaryBoundaryPointRigidStatement.lean', 422, 140230, 1036, 'H9 (AVT)', 'exists_tripleChart_unitary_boundary'],
+    ['IntegralStructures.Development', 'src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/Development.lean', 367, 98399, 780, 'H12', 'galoisLocalGlobalStrong'],
+    ['MoriwakiBigTheorem.Outright', 'src/Development/WeilBound/CoreStatements/AutomorphicKernels/MoriwakiBigness/MoriwakiBigTheorem/Outright.lean', 272, 35378, 419, 'Est. B/C', 'moriwakiBig_outright'],
+    ['AVT...BundleBothPartsStandardKernel', 'src/Development/AbelianVarietyTheory/Proofs/SatakeParameters/BundleBothPartsOfStandardKernelAndSixHypotheses.lean', 242, 63885, 619, 'H9 (AVT)', 'bundleBothPartsOfStandardKernel'],
+    ['AVT...LeafDepthAllRecord', 'src/Development/AbelianVarietyTheory/Proofs/DivisorProofs/LeafDepthAllRecord.lean', 230, 74251, 214, 'H9 (AVT)', 'leafDepthAllRecord'],
   ];
 
   let activePFilter = 'ALL';
@@ -953,21 +969,22 @@
     }
     document.getElementById('qgrh-verdict').innerHTML = vHtml;
 
-    // Plot theta*(tau, aq) across tau in [2.0, 6.5] -> x in [50, 495], y in [0.4, 1.5] -> [190, 20]
+    // Plot theta*(tau, aq) across tau in [2.0, 6.5] -> x in [50, 495], y in [0.4, 1.5] -> [194, 34]
     const xM = t => 50 + ((t - 2.0) / 4.5) * 445;
-    const yM = y => 190 - ((Math.min(1.5, Math.max(0.4, y)) - 0.4) / 1.1) * 170;
+    const yM = y => 194 - ((Math.min(1.5, Math.max(0.4, y)) - 0.4) / 1.1) * 160;
     const yStart = Math.max(convFloor, 2.0 + aq - 2.0 / 3.0);
     const kClamped = Math.min(6.5, Math.max(2.0, kink));
 
     document.getElementById('qgrh-svg').innerHTML = `
+      <text x="50" y="20" fill="#8ce99a" font-size="10" font-family="monospace">&theta;*(&tau;_k,&alpha;_q)</text>
+      <text x="155" y="20" fill="#e2ccff" font-size="10" font-family="monospace">floor (1+&alpha;_q)/2 = ${convFloor.toFixed(3)}</text>
+      <text x="348" y="20" fill="#ff948e" font-size="10" font-family="monospace">trivial &theta; = 1.0</text>
       <line x1="50" y1="${yM(1.0)}" x2="495" y2="${yM(1.0)}" stroke="#f85149" stroke-dasharray="4,4" stroke-width="1.1" />
       <line x1="50" y1="${yM(convFloor)}" x2="495" y2="${yM(convFloor)}" stroke="#bc8cff" stroke-dasharray="3,3" stroke-width="1.1" />
       <polyline fill="none" stroke="#3fb950" stroke-width="2.8"
         points="${xM(2.0)},${yM(yStart)} ${xM(kClamped)},${yM(convFloor)} ${xM(6.5)},${yM(convFloor)}" />
       <circle cx="${xM(tau)}" cy="${yM(theta)}" r="6" fill="#58a6ff" stroke="#fff" stroke-width="2" />
-      <text x="56" y="${yM(1.0)-5}" fill="#ff948e" font-size="10.5" font-family="monospace">&theta; = 1.0 (trivial line)</text>
-      <text x="290" y="${yM(convFloor)-6}" fill="#e2ccff" font-size="10.5" font-family="monospace">floor (1+&alpha;_q)/2 = ${convFloor.toFixed(3)}</text>
-      <text x="215" y="212" fill="#8fa3bf" font-size="11">Twist Cap &tau;_k &isin; [2.0, 6.5] at &alpha;_q = ${aq.toFixed(2)}</text>
+      <text x="200" y="213" fill="#8fa3bf" font-size="11">Twist Cap &tau;_k &isin; [2.0, 6.5] at &alpha;_q = ${aq.toFixed(2)}</text>
     `;
   }
   document.getElementById('qgrh-tau').addEventListener('input', renderQGRH);
